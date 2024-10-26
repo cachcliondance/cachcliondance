@@ -1,0 +1,384 @@
+:root {
+    --dark-red: #672714;
+    --green-grey: #BCB19B;
+    --light-red: #AA3D1D;
+    --eggshell: #F3EFE7;
+    --light-beige: #F1E3C8;
+    --dark-green: #393D32;
+    --medium-green: #676758;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('assets/FuturaBookfont.ttf');
+}
+
+@font-face {
+    font-family: 'Futura-Light';
+    src: url('assets/FuturaLightfont.ttf');
+}
+
+.nav-bar {
+    top: 0;
+    left: 0;
+}
+
+.navbar-container {
+    font-family: 'Futura';
+    display: flex;
+    justify-content: center;
+    background-color: var(--dark-green);
+    padding: 1.5rem;
+}
+  
+.navbar-logo a {
+    color: var(--light-beige);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar-logo a p {
+    text-align: left;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    margin: auto;
+    justify-content: flex-end;
+    margin-right: 5%;
+    gap: 3rem;
+}
+
+.navbar-links a path{
+    stroke: var(--navy-blue);
+    padding: 10px;
+}
+  
+.navbar-links a:hover svg path{
+    stroke: var(--dark-green);
+} 
+
+.navbar-links a:hover {
+    cursor: pointer;
+}
+
+.navbar-links p {
+    color: var(--light-beige);
+    text-decoration: none;
+    font-size: 18px;
+    background-color: var(--navy-blue);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.navbar-links p:hover {
+    background-color: var(--dark-green);
+}
+
+.popup-container {
+    position: absolute; 
+    background-color: white;
+    color: var(--dark-gray);
+    align-self: center;
+    width: 100%;
+    font-family: 'Futura';
+}
+/* 
+.log-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.milestory-profile-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.log-submit button {
+    color: white;
+    width: 100px;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: var(--navy-blue);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.log-submit button:hover {
+    background-color: var(--dark-green);
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--navy-blue);
+    padding-bottom: 1rem;
+    transition: color 0.1s;
+    padding-left: 1rem;
+}
+
+.close-button:hover {
+    color: var(--dark-green);
+} */
+
+/* .welcome {
+    color: var(--dark-gray);
+    font-family: 'Futura';
+    font-size: 2rem;
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+}
+
+.tag {
+    font-family: 'Futura';
+    font-size: 1rem;
+    color: var(--dark-gray);
+    letter-spacing: .1rem;
+} */
+
+.banner {
+    position: relative;
+    width: 100%;
+    background-color: var(--dark-green);
+    padding-bottom: 50px;
+}
+
+.homepage-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 50px; */
+}
+
+.resized-image {
+    width: 80%;
+    height: auto;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 40%;
+    color: var(--light-beige);
+    background-color: var(--dark-green);
+    padding: 30px;
+    border-radius: 0 0 100px 0;
+    font-size: 50px;
+    text-align: left;
+}
+
+.text-overlay p {
+    font-family: 'Futura';
+    letter-spacing: 1px;
+}
+
+.learn-more-button {
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+    font-size: 22px;
+    text-transform: uppercase;
+    border: 2px solid var(--light-beige);
+    width: 40%;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-button:hover {
+    cursor: pointer;
+    background-color: var(--light-red);
+}
+
+.explore-section {
+    padding: 40px;
+    margin-left: 5%;
+}
+
+.explore-section h1 {
+    font-family: 'Futura';
+    text-transform: uppercase;
+    font-size: 50px;
+    color: var(--light-beige);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.explore-section p {
+    font-family: 'Futura';
+    color: white;
+    font-size: 20px;
+    width: 60%;
+}
+
+.homepage-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+/* 
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.milestone-page-container {
+    position: relative;
+    background-color: var(--dark-green);
+    border-radius: 30px;
+    height: 100%;
+    width: 90%;
+    padding: 20px; 
+}
+
+.milestone-page {
+    background-color: var(--bg-color);
+    padding: 30px;
+}
+
+.milestone-page-divider {
+    width: 20%; 
+    height: 6px; 
+    background-color: var(--light-green); 
+    margin: 30px auto; 
+}
+
+.milestone-page h1 {
+    font-family: 'Futura';
+    letter-spacing: 3px;
+    color: white;
+    font-size: 32px;
+    margin-top: 30px;
+}
+
+.milestone-page p {
+    font-family: 'Futura';
+    color: white;
+    width: 60%;
+}
+
+.add-milestone-button a p, .log-milestone-button a p{
+    margin: auto;
+    color: white;
+    width: 200px;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: var(--navy-blue);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.add-milestone-button a p:hover, .log-milestone-button a p:hover {
+    background-color: var(--light-green);
+}
+
+.arrow-left {
+    stroke: white;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    transition: stroke 0.3s ease;
+}
+
+.arrow-left:hover {
+    stroke: var(--light-green);
+}
+
+.milestones .container .row-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap:15px;
+}
+
+.milestone-card {
+    background-color: white;
+    border-radius: 10%;
+    height: clamp(280px, 20vw, 330px);
+    width: clamp(280px, 20vw, 330px);
+    padding: 20px; 
+    box-sizing: border-box;
+    aspect-ratio: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.milestone-card h1 {
+    border: solid 1px var(--navy-blue);
+    padding: 10px; 
+    color: var(--navy-blue);
+    font-family: 'Futura';
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.milestone-card p {
+    color: var(--navy-blue);
+    font-family: 'Futura';
+    width: 100%;
+} */
+
+.footer {
+    background-color: var(--eggshell);
+}
+
+.footer h1 {
+    font-family: 'Futura';
+    color: var(--dark-green);
+    width: 50%;
+    margin: auto;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.footer p {
+    font-family: 'Futura';
+    font-size: 18px;
+    color: var(--medium-green);
+}
+
+.facebook-logo {
+    width: 40px;
+}
+
+.facebook-logo:hover {
+    cursor: pointer;
+}
+  
+
+@media (max-width: 767px) {
+    .learn-more-container {
+        width: 100%;
+    }
+
+    .learn-more h1 {
+        font-size: 24px;
+        margin-top: 50px;
+    }
+
+    .learn-more p {
+      width: 100%;
+    }
+
+    .custom-shape-divider-top-1723951671 svg {
+        position: relative;
+        display: block;
+        width: calc(121% + 1.3px);
+        height: 60px;
+    }
+}
