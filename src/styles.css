@@ -1,90 +1,83 @@
 :root {
-    --dark-red: #672714;
-    --green-grey: #BCB19B;
-    --light-red: #AA3D1D;
-    --eggshell: #F3EFE7;
-    --light-beige: #F1E3C8;
-    --dark-green: #393D32;
-    --medium-green: #676758;
+  --dark-red: #672714;
+  --green-grey: #bcb19b;
+  --light-red: #aa3d1d;
+  --eggshell: #f3efe7;
+  --light-beige: #f1e3c8;
+  --dark-green: #393d32;
+  --medium-green: #676758;
+  --light-green: #95907d;
 }
 
 @font-face {
-    font-family: 'Futura';
-    src: url('assets/FuturaBookfont.ttf');
+  font-family: "Futura";
+  src: url("assets/FuturaBookfont.ttf");
 }
 
 @font-face {
-    font-family: 'Futura-Light';
-    src: url('assets/FuturaLightfont.ttf');
+  font-family: "Futura-Light";
+  src: url("assets/FuturaLightfont.ttf");
 }
 
 .nav-bar {
-    top: 0;
-    left: 0;
+  top: 0;
+  left: 0;
 }
 
 .navbar-container {
-    font-family: 'Futura';
-    display: flex;
-    justify-content: center;
-    background-color: var(--dark-green);
-    padding: 1.5rem;
-}
-  
-.navbar-logo a {
-    color: var(--light-beige);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 18px;
+  font-family: "Futura";
+  display: flex;
+  justify-content: center;
+  background-color: var(--dark-green);
+  padding: 1.5rem;
 }
 
-.navbar-logo a p {
-    text-align: left;
+.navbar-logo a {
+  color: var(--light-beige);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar-logo p {
+  text-align: left;
 }
 
 .navbar-links {
-    list-style: none;
-    display: flex;
-    margin: auto;
-    justify-content: flex-end;
-    margin-right: 5%;
-    gap: 3rem;
+  list-style: none;
+  display: flex;
+  margin: auto;
+  justify-content: flex-end;
+  margin-right: 5%;
+  gap: 3rem;
+  text-decoration: none;
 }
 
-.navbar-links a path{
-    stroke: var(--navy-blue);
-    padding: 10px;
-}
-  
-.navbar-links a:hover svg path{
-    stroke: var(--dark-green);
-} 
-
-.navbar-links a:hover {
-    cursor: pointer;
+.navbar-link {
+  text-decoration: none;
 }
 
 .navbar-links p {
-    color: var(--light-beige);
-    text-decoration: none;
-    font-size: 18px;
-    background-color: var(--navy-blue);
-    padding: 10px;
-    cursor: pointer;
+  color: var(--light-beige);
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .navbar-links p:hover {
-    background-color: var(--dark-green);
+  color: var(--medium-green);
 }
 
 .popup-container {
-    position: absolute; 
-    background-color: white;
-    color: var(--dark-gray);
-    align-self: center;
-    width: 100%;
-    font-family: 'Futura';
+  position: absolute;
+  background-color: white;
+  color: var(--dark-gray);
+  align-self: center;
+  width: 100%;
+  font-family: "Futura";
 }
 /* 
 .log-popup {
@@ -148,86 +141,238 @@
 } */
 
 .banner {
-    position: relative;
-    width: 100%;
-    background-color: var(--dark-green);
-    padding-bottom: 50px;
+  position: relative;
+  width: 100%;
+  background-color: var(--dark-green);
+  padding-bottom: 50px;
 }
 
 .homepage-banner {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* margin: 50px; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: 50px; */
 }
 
 .resized-image {
-    width: 80%;
-    height: auto;
+  width: 80%;
+  height: auto;
+  max-height: 400px;
 }
 
 .text-overlay {
-    position: absolute;
-    top: 0;
-    left: 10%;
-    width: 40%;
-    color: var(--light-beige);
-    background-color: var(--dark-green);
-    padding: 30px;
-    border-radius: 0 0 100px 0;
-    font-size: 50px;
-    text-align: left;
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 40%;
+  color: var(--light-beige);
+  background-color: var(--dark-green);
+  padding: 30px;
+  border-radius: 0 0 100px 0;
+  font-size: 50px;
+  text-align: left;
 }
 
 .text-overlay p {
-    font-family: 'Futura';
-    letter-spacing: 1px;
+  font-family: "Futura";
+  letter-spacing: 1px;
 }
 
 .learn-more-button {
-    margin: auto;
-    text-align: center;
-    padding: 5px;
-    font-size: 22px;
-    text-transform: uppercase;
-    border: 2px solid var(--light-beige);
-    width: 40%;
-    transition: background-color 0.3s ease;
+  margin: auto;
+  text-align: center;
+  padding: 5px;
+  font-size: 22px;
+  text-transform: uppercase;
+  border: 2px solid var(--light-beige);
+  width: 40%;
+  transition: background-color 0.3s ease;
+  color: var(--light-beige);
 }
 
 .learn-more-button:hover {
-    cursor: pointer;
-    background-color: var(--light-red);
+  cursor: pointer;
+  background-color: var(--light-red);
 }
 
 .explore-section {
-    padding: 40px;
-    margin-left: 5%;
+  padding: 40px;
+  margin-left: 5%;
 }
 
 .explore-section h1 {
-    font-family: 'Futura';
-    text-transform: uppercase;
-    font-size: 50px;
-    color: var(--light-beige);
-    letter-spacing: 2px;
-    margin-bottom: 20px;
+  font-family: "Futura";
+  text-transform: uppercase;
+  font-size: 50px;
+  color: var(--light-beige);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
 }
 
 .explore-section p {
-    font-family: 'Futura';
-    color: white;
-    font-size: 20px;
-    width: 60%;
+  font-family: "Futura";
+  color: white;
+  font-size: 20px;
+  width: 70%;
 }
 
 .homepage-images {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 5%;
-    margin-right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.about-us-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-green);
+  padding-bottom: 30px;
+}
+
+.about-us-banner h1 {
+  font-family: "Futura";
+  color: var(--dark-green);
+  background-color: var(--green-grey);
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+}
+
+.about-us-values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+.about-us-values h1,
+.about-us-values p {
+  font-family: "Futura";
+  text-align: center;
+  width: 60%;
+}
+
+.about-us-values h1 {
+  margin-bottom: 30px;
+}
+
+.mission {
+  background-color: var(--light-green);
+  color: white;
+}
+
+.vision {
+  background-color: var(--medium-green);
+  color: var(--light-beige);
+}
+
+.about-us-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--green-grey);
+}
+
+.resizeable-about-us-img {
+  width: 100%; /* Take up the full height of the column */
+  max-height: 750px;
+  object-fit: cover; /* Crop the image to fill the column without distortion */
+}
+
+.code-of-conduct {
+  background-color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.code-of-conduct h1,
+.code-of-conduct p {
+  font-family: "Futura";
+  text-align: center;
+  width: 70%;
+}
+
+.code-of-conduct h1 {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 5%;
+}
+
+.code-of-conduct h1 span {
+  color: var(--light-red);
+}
+
+.code-of-conduct p {
+  color: var(--light-beige);
+  font-size: 18px;
+}
+
+.resized-cc-image {
+  width: 60%;
+  height: auto;
+  max-height: 300px;
+}
+
+.code-of-conduct-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-green);
+}
+
+.cc-text-overlay {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 30%;
+  color: var(--light-beige);
+  background-color: var(--dark-green);
+  transform: translate(-50%, -50%); /* Offset to center exactly */
+  padding: 20px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.cc-text-overlay h1 {
+  font-family: "Futura";
+  letter-spacing: 1px;
+}
+
+.religious-concerns {
+  background-color: var(--medium-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+.religious-concerns h1,
+.religious-concerns p {
+  text-align: left;
+  font-family: "Futura";
+  width: 70%;
+}
+
+.religious-concerns h1 {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.religious-concerns p {
+  color: var(--light-beige);
+  font-size: 18px;
 }
 /* 
 .info {
@@ -334,51 +479,50 @@
 } */
 
 .footer {
-    background-color: var(--eggshell);
+  background-color: var(--eggshell);
 }
 
 .footer h1 {
-    font-family: 'Futura';
-    color: var(--dark-green);
-    width: 50%;
-    margin: auto;
-    font-size: 30px;
-    margin-bottom: 40px;
+  font-family: "Futura";
+  color: var(--dark-green);
+  width: 40%;
+  margin: auto;
+  font-size: 30px;
+  margin-bottom: 40px;
 }
 
 .footer p {
-    font-family: 'Futura';
-    font-size: 18px;
-    color: var(--medium-green);
+  font-family: "Futura";
+  font-size: 18px;
+  color: var(--medium-green);
 }
 
 .facebook-logo {
-    width: 40px;
+  width: 40px;
 }
 
 .facebook-logo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-  
 
 @media (max-width: 767px) {
-    .learn-more-container {
-        width: 100%;
-    }
+  .learn-more-container {
+    width: 100%;
+  }
 
-    .learn-more h1 {
-        font-size: 24px;
-        margin-top: 50px;
-    }
+  .learn-more h1 {
+    font-size: 24px;
+    margin-top: 50px;
+  }
 
-    .learn-more p {
-      width: 100%;
-    }
+  .learn-more p {
+    width: 100%;
+  }
 
-    .custom-shape-divider-top-1723951671 svg {
-        position: relative;
-        display: block;
-        width: calc(121% + 1.3px);
-        height: 60px;
-    }
+  .custom-shape-divider-top-1723951671 svg {
+    position: relative;
+    display: block;
+    width: calc(121% + 1.3px);
+    height: 60px;
+  }
 }

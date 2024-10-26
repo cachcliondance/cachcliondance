@@ -1,10 +1,7 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles.css";
-import ProfilePopup from "./ProfilePopup";
-import { Modal } from "react-bootstrap";
 
 const NavBar = () => {
-
   return (
     <div>
       <nav>
@@ -12,16 +9,18 @@ const NavBar = () => {
           <div className="row align-items-center w-100">
             <div className="col-3">
               <div className="navbar-logo">
-                <a href="/"><p>COLORADO ASIAN CULTURAL HERITAGE CENTER DRAGON AND LION DANCE TROUPE</p></a>
+                <Link to="/">
+                  <p>COLORADO ASIAN CULTURAL HERITAGE CENTER DRAGON AND LION DANCE TROUPE</p>
+                </Link>
               </div>
             </div>
             <div className="col-9">
               <div className="navbar-links">
-                <p>Home</p>
-                <p>About Us</p>
-                <p>Code of Conduct</p>
-                <p>Contact</p>
-                <p>More</p>
+                <Link className="navbar-link" to="/"><p>Home</p></Link>
+                <Link className="navbar-link" to="/about-us"><p>About Us</p></Link>
+                <Link className="navbar-link" to="/code-of-conduct"><p>Code of Conduct</p></Link>
+                <Link className="navbar-link" to="/contact"><p>Contact</p></Link>
+                <Link className="navbar-link" to="/more"><p>More</p></Link>
               </div>
             </div>
           </div>

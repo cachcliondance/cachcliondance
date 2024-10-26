@@ -4,11 +4,11 @@ import homepageImage from "../assets/homepage_banner.jpg";
 import homepageImg1 from "../assets/homepage_img1.jpg";
 import homepageImg2 from "../assets/homepage_img2.jpg";
 import homepageImg3 from "../assets/homepage_img3.jpg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
     <div className="banner">
-      <NavBar />
       <div className="homepage-banner">
         <img
           className="resized-image"
@@ -17,7 +17,7 @@ const Banner = () => {
         />
         <div className="text-overlay">
           <p>EXPERIENCE THE BEAUTY OF DANCE</p>
-          <p className="learn-more-button">Learn More</p>
+          <Link className="navbar-link" to="/about-us"><p className="learn-more-button">Learn More</p></Link>
         </div>
       </div>
       <div className="explore-section">
