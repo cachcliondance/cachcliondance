@@ -226,20 +226,15 @@
 }
 
 .about-us-banner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--dark-green);
-  padding-bottom: 30px;
 }
 
-.about-us-banner h1 {
-  font-family: "Futura";
-  color: var(--dark-green);
-  background-color: var(--green-grey);
-  width: 60%;
-  padding: 20px;
-  text-align: center;
+.about-us-container {
+  background-color: var(--dark-green);
 }
 
 .about-us-values {
@@ -335,7 +330,7 @@
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
   width: 30%;
-  color: var(--light-beige);
+  color: white;
   background-color: var(--dark-green);
   transform: translate(-50%, -50%); /* Offset to center exactly */
   padding: 20px;
@@ -374,6 +369,119 @@
   color: var(--light-beige);
   font-size: 18px;
 }
+
+.contact-info-section {
+  background-color: var(--dark-green);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.contact-info-section p {
+  color: var(--eggshell);
+  font-family: "Futura";
+  text-align: left;
+  font-size: 18px;
+}
+
+.contact-info-section h1 {
+  color: var(--green-grey);
+  font-family: "Futura";
+  text-align: center;
+  font-size: 26px;
+}
+
+.contact-icons {
+  gap: 10px;
+}
+
+.resized-map {
+  width: 80%;
+  height: auto;
+}
+
+.join-us {
+  background-color: var(--dark-green);
+}
+
+.book-us-container {
+  background-color: var(--dark-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-us {
+  background-color: var(--medium-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.join-us-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--medium-green);
+}
+
+.join-us-form h1, .book-us h1 {
+  font-family: "Futura";
+  width: 70%;
+  color: var(--light-beige);
+  padding: 20px;
+  font-size: 44px;
+  text-align: center;
+}
+
+.join-us-form-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Futura';
+  color: var(--light-beige);
+}
+
+.join-us-form-inputs p {
+  font-size: 20px;
+}
+
+.join-us-form-inputs input {
+  background-color: var(--dark-green);
+  border: solid 2px var(--light-green);
+  color: white;
+  padding: 10px;
+}
+
+.join-us-submit button {
+  color: white;
+  width: 100px;
+  text-decoration: none;
+  font-size: 1rem;
+  background-color: var(--medium-green);
+  padding: 10px;
+  cursor: pointer;
+  border: solid 2px var(--light-green);
+}
+
+.join-us-submit button:hover {
+  background-color: var(--dark-green);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 4 columns */
+}
+
+.grid-image {
+  width: 100%; /* Make images responsive */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Crop if needed */
+}
+
 /* 
 .info {
     display: flex;

@@ -1,5 +1,4 @@
 import "../styles.css";
-import NavBar from "./NavBar";
 import homepageImage from "../assets/homepage_banner.jpg";
 import homepageImg1 from "../assets/homepage_img1.jpg";
 import homepageImg2 from "../assets/homepage_img2.jpg";
