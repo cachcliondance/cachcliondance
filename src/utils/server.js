@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: "katrinango3388@gmail.com",
-    pass: "kihayfpzobwtfzkd" ,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS ,
   },
 });
 
@@ -42,10 +42,10 @@ app.post("/api/join-us", (req, res) => {
 
   // Send email
   const mailOptions = {
-    from: email,
-    to: 'cachcliondance@gmail.com', 
-    subject: 'New CACHC Join Us Submission',
-    text: `Name: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}`,
+    from: 'cachcliondance@gmail.com',
+    to: 'katrinango3388@gmail.com', 
+    subject: 'New Team Interest Submission - Join Us Form',
+    text: `A new “Join Us” form submission has just come through filled out from the website. Here are the details of the potential team member:\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -73,7 +73,27 @@ app.post("/api/book-us", (req, res) => {
     additional,
   } = req.body;
 
-  res.json({ message: "Book Us form submitted successfully", data: req.body });
+  if (!name || !email || !phone || !eventName || !eventDate || !eventTime || !eventType || !performanceRequests || !location) {
+    return res.status(400).json({ error: "All fields are required." });
+  }
+
+  // Send email
+  const mailOptions = {
+    from: 'cachcliondance@gmail.com',
+    to: 'katrinango3388@gmail.com', 
+    subject: 'New Event Book Submission',
+    text: `A new event form submission has been filled out from the website. Here are the details of the requested event:
+    \n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent Date: ${eventDate}\nEvent Time: ${eventTime}\nEvent Type: ${eventType}\nPerformance Request(s): ${performanceRequests}\nLocation: ${location}\nAdditional: ${additional}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending email:", error);
+      return res.status(500).json({ error: "Failed to send email." });
+    }
+    console.log("Email sent: " + info.response);
+    res.json({ message: "Book Us form submitted successfully", data: req.body });
+  });
 });
 
 // Start the server

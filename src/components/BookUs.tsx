@@ -13,6 +13,9 @@ const BookUs = () => {
     location: "",
     additional: "",
   });
+  const [submissionMessage, setSubmissionMessage] = useState(""); // State for submission message
+
+  const performanceOptions = ["Festive Drumming", "Lion", "Dragon"];
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
@@ -22,23 +25,66 @@ const BookUs = () => {
     });
   };
 
+  const handleCheckboxChange = (event: {
+    target: { value: any; checked: any };
+  }) => {
+    const { value, checked } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      performanceRequests: checked
+        ? [...prevFormData.performanceRequests, value]
+        : prevFormData.performanceRequests.filter(
+            (request) => request !== value
+          ),
+    }));
+  };
+
+  const formatTime = (time) => {
+    const [hour, minute] = time.split(":");
+    const suffix = hour >= 12 ? "PM" : "AM";
+    const formattedHour = (hour % 12 || 12).toString().padStart(2, "0");
+    return `${formattedHour}:${minute} ${suffix}`;
+  };
+
   // Handle form submission
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
+    // Reformat the date to "mm-dd-yyyy" format
+    const [year, month, day] = formData.eventDate.split("-");
+    const formattedDate = `${month}-${day}-${year}`;
+
+    // Optional: Modify eventTime to 12-hour format
+    const modifiedFormData = {
+      ...formData,
+      eventDate: formattedDate,
+      eventTime: formatTime(formData.eventTime),
+    };
+
     try {
-      const response = await fetch("http://localhost:5173/api/book-us", {
+      const response = await fetch("http://localhost:5002/api/book-us", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(modifiedFormData),
       });
 
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Response body:", errorText);
+        throw new Error("Network response was not ok");
+      }
+
       const data = await response.json();
-      console.log(data.message); // Handle success message
+      console.log("Response from server:", data);
+
+      // Set success message
+      setSubmissionMessage("Thank you! Your booking request has been submitted successfully.");
     } catch (error) {
-      console.error("Error:", error); // Handle error
+      console.error("Error submitting form:", error);
+      // Set error message
+      setSubmissionMessage("Oops! There was an error submitting your booking request. Please try again.");
     }
   };
 
@@ -116,20 +162,34 @@ const BookUs = () => {
                 name="eventType"
                 value={formData.eventType}
                 onChange={handleChange}
+                required
               >
                 <option value="">Select an option</option>
-                <option value="option1">Grand Opening</option>
-                <option value="option2">Wedding Anniversary</option>
-                <option value="option3">Birthday</option>
-                <option value="option4">New Years</option>
-                <option value="option5">Mid Autumn</option>
-                <option value="option6">Festival</option>
-                <option value="option7">School Event</option>
-                <option value="option8">Cultural Event</option>
-                <option value="option9">
+                <option value="Grand Opening">Grand Opening</option>
+                <option value="Wedding Anniversary">Wedding Anniversary</option>
+                <option value="Birthday">Birthday</option>
+                <option value="New Years">New Years</option>
+                <option value="Mid Autumn">Mid Autumn</option>
+                <option value="Festival">Festival</option>
+                <option value="School Event">School Event</option>
+                <option value="Cultural Event">Cultural Event</option>
+                <option value="Other/Specify in Additional Details">
                   Other/Specify in Additional Details
                 </option>
               </select>
+              <p>Performance Requests:</p>
+              {performanceOptions.map((option) => (
+                <label key={option}>
+                  <input
+                    type="checkbox"
+                    name="performanceRequests"
+                    value={option}
+                    checked={formData.performanceRequests.includes(option)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {option}
+                </label>
+              ))}
             </div>
             <div className="d-flex gap-4 m-3">
               <p>Address/Location:</p>
@@ -156,6 +216,7 @@ const BookUs = () => {
               <button type="submit">Submit</button>
             </div>
           </form>
+          {submissionMessage && <p className="submission-message pt-3">{submissionMessage}</p>}
         </div>
       </div>
     </div>

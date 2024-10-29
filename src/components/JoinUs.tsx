@@ -13,7 +13,7 @@ const JoinUs = () => {
     email: "",
     phone: "",
   });
-  //   const [responseMessage, setResponseMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState(""); // State for submission message
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
@@ -45,8 +45,12 @@ const JoinUs = () => {
 
       const data = await response.json(); // This line may throw an error if the response is not valid JSON
       console.log("Response from server:", data);
+      // Set success message
+      setSubmissionMessage("Thank you! Your form has been submitted successfully.");
     } catch (error) {
       console.error("Error submitting form:", error);
+      // Set error message
+      setSubmissionMessage("Oops! There was an error submitting your form. Please try again.");
     }
   };
 
@@ -105,6 +109,7 @@ const JoinUs = () => {
                 <button type="submit">Submit</button>
               </div>
             </form>
+            {submissionMessage && <p className="submission-message pt-3">{submissionMessage}</p>}
           </div>
           <div className="col-lg-6 d-flex align-items-center justify-content-center p-0">
             <div className="image-grid">

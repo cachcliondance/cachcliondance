@@ -482,109 +482,11 @@
   object-fit: cover; /* Crop if needed */
 }
 
-/* 
-.info {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
+.submission-message {
+  font-family: 'Futura';
+  font-size: 18px;
+  color: var(--light-beige);
 }
-
-.milestone-page-container {
-    position: relative;
-    background-color: var(--dark-green);
-    border-radius: 30px;
-    height: 100%;
-    width: 90%;
-    padding: 20px; 
-}
-
-.milestone-page {
-    background-color: var(--bg-color);
-    padding: 30px;
-}
-
-.milestone-page-divider {
-    width: 20%; 
-    height: 6px; 
-    background-color: var(--light-green); 
-    margin: 30px auto; 
-}
-
-.milestone-page h1 {
-    font-family: 'Futura';
-    letter-spacing: 3px;
-    color: white;
-    font-size: 32px;
-    margin-top: 30px;
-}
-
-.milestone-page p {
-    font-family: 'Futura';
-    color: white;
-    width: 60%;
-}
-
-.add-milestone-button a p, .log-milestone-button a p{
-    margin: auto;
-    color: white;
-    width: 200px;
-    text-decoration: none;
-    font-size: 1rem;
-    background-color: var(--navy-blue);
-    padding: 10px;
-    cursor: pointer;
-}
-
-.add-milestone-button a p:hover, .log-milestone-button a p:hover {
-    background-color: var(--light-green);
-}
-
-.arrow-left {
-    stroke: white;
-    position: absolute;
-    top: 30px;
-    left: 40px;
-    transition: stroke 0.3s ease;
-}
-
-.arrow-left:hover {
-    stroke: var(--light-green);
-}
-
-.milestones .container .row-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap:15px;
-}
-
-.milestone-card {
-    background-color: white;
-    border-radius: 10%;
-    height: clamp(280px, 20vw, 330px);
-    width: clamp(280px, 20vw, 330px);
-    padding: 20px; 
-    box-sizing: border-box;
-    aspect-ratio: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.milestone-card h1 {
-    border: solid 1px var(--navy-blue);
-    padding: 10px; 
-    color: var(--navy-blue);
-    font-family: 'Futura';
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-.milestone-card p {
-    color: var(--navy-blue);
-    font-family: 'Futura';
-    width: 100%;
-} */
 
 .footer {
   background-color: var(--eggshell);
