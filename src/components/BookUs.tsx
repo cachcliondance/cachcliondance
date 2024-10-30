@@ -1,7 +1,20 @@
 import { useState } from "react";
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  eventName: string;
+  eventDate: string;
+  eventTime: string;
+  eventType: string;
+  performanceRequests: string[]; // Updated to be an array of strings
+  location: string;
+  additional: string;
+}
+
 const BookUs = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -9,7 +22,7 @@ const BookUs = () => {
     eventDate: "",
     eventTime: "",
     eventType: "",
-    performanceRequests: "",
+    performanceRequests: [], // Initialized as an empty array
     location: "",
     additional: "",
   });
@@ -34,12 +47,12 @@ const BookUs = () => {
       performanceRequests: checked
         ? [...prevFormData.performanceRequests, value]
         : prevFormData.performanceRequests.filter(
-            (request) => request !== value
+            (request: any) => request !== value
           ),
     }));
   };
 
-  const formatTime = (time) => {
+  const formatTime = (time: any) => {
     const [hour, minute] = time.split(":");
     const suffix = hour >= 12 ? "PM" : "AM";
     const formattedHour = (hour % 12 || 12).toString().padStart(2, "0");
