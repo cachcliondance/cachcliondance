@@ -56,9 +56,9 @@ const JoinUs = () => {
 
   return (
     <div>
-      <div className="join-us container-fluid pt-5">
+      <div className="join-us container-fluid">
         <div className="row">
-          <div className="join-us-form col-lg-6 pb-3">
+          <div className="join-us-form col-lg-6 pt-3 pb-3">
             <h1>Join Us</h1>
             <form className="join-us-form-inputs" onSubmit={handleSubmit}>
               <div className="d-flex gap-4 m-3">

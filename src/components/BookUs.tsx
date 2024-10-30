@@ -90,13 +90,14 @@ const BookUs = () => {
 
   return (
     <div>
-      <div className="book-us-container pt-5 pb-5">
+      <div className="book-us-container">
         <div className="book-us py-4">
           <h1>Book Us</h1>
           <form className="join-us-form-inputs" onSubmit={handleSubmit}>
-            <div className="d-flex gap-4 m-3">
+            <div className="book-us-inputs gap-4 m-3">
               <p>Name:</p>
               <input
+                className="book-us-form-inputs"
                 type="text"
                 id="name"
                 name="name"
@@ -106,6 +107,7 @@ const BookUs = () => {
               />
               <p>Phone Number:</p>
               <input
+                className="book-us-form-inputs"
                 type="tel"
                 id="phone"
                 name="phone"
@@ -114,9 +116,10 @@ const BookUs = () => {
                 required
               />
             </div>
-            <div className="d-flex gap-4 m-3">
+            <div className="book-us-inputs gap-4 m-3">
               <p>Email:</p>
               <input
+                className="book-us-form-inputs"
                 type="email"
                 id="email"
                 name="email"
@@ -125,9 +128,10 @@ const BookUs = () => {
                 required
               />
             </div>
-            <div className="d-flex gap-4 m-3">
+            <div className="book-us-inputs gap-4 m-3">
               <p>Event Name:</p>
               <input
+                className="book-us-form-inputs"
                 type="text"
                 id="eventName"
                 name="eventName"
@@ -136,9 +140,10 @@ const BookUs = () => {
                 required
               />
             </div>
-            <div className="d-flex gap-4 m-3">
+            <div className="book-us-inputs gap-4 m-3">
               <p>Event Date:</p>
               <input
+                className="book-us-form-inputs"
                 type="date"
                 id="eventDate"
                 name="eventDate"
@@ -148,6 +153,7 @@ const BookUs = () => {
               />
               <p>Event Time:</p>
               <input
+                className="book-us-form-inputs"
                 type="time"
                 id="eventTime"
                 name="eventTime"
@@ -156,7 +162,7 @@ const BookUs = () => {
                 required
               />
             </div>
-            <div className="d-flex gap-4 m-3">
+            <div className="book-us-inputs gap-4 m-3">
               <p>Event Type:</p>
               <select
                 name="eventType"
@@ -179,7 +185,7 @@ const BookUs = () => {
               </select>
               <p>Performance Requests:</p>
               {performanceOptions.map((option) => (
-                <label key={option}>
+                <label className="requests-labels" key={option}>
                   <input
                     type="checkbox"
                     name="performanceRequests"
@@ -191,9 +197,10 @@ const BookUs = () => {
                 </label>
               ))}
             </div>
-            <div className="d-flex gap-4 m-3">
+            <div className="book-us-inputs gap-4 m-3">
               <p>Address/Location:</p>
               <input
+                className="book-us-form-inputs"
                 type="text"
                 id="location"
                 name="location"
@@ -202,9 +209,10 @@ const BookUs = () => {
                 required
               />
             </div>
-            <div className="d-flex gap-4 m-3">
+            <div className="book-us-inputs gap-4 m-3">
               <p>Additional Details:</p>
               <input
+                className="book-us-form-inputs"
                 type="text"
                 id="additional"
                 name="additional"

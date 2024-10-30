@@ -8,15 +8,13 @@ const Footer = () => {
       </h1>
       <div className="container">
         <div className="row align-items-center justify-content-center">
-          <div className="col-md-4 col-12">
+          <div className="col-sm-4 col-5">
             <p>Phong Vo</p>
             <a className="navbar-link" href="mailto:pvo15@yahoo.com"><p>pvo15@yahoo.com</p></a>
             <p>303-669-1095</p>
             <a href="https://www.facebook.com/CACHCdragonlion/">
               <svg
                 className="facebook-logo"
-                width="48"
-                height="48"
                 viewBox="0 0 48 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +30,7 @@ const Footer = () => {
               </svg>
             </a>
           </div>
-          <div className="col-md-4 col-12">
+          <div className="col-sm-4 col-5">
             <p>
               All practices are located at our main training facility:<br></br>
               5999 Pecos St, Denver, CO 80221

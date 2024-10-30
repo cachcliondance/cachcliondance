@@ -32,15 +32,12 @@
   padding: 1.5rem;
 }
 
-.navbar-logo a {
+.navbar-logo p {
   color: var(--light-beige);
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
   font-size: 18px;
-}
-
-.navbar-logo p {
   text-align: left;
 }
 
@@ -50,7 +47,7 @@
   margin: auto;
   justify-content: flex-end;
   margin-right: 5%;
-  gap: 3rem;
+  gap: 5%;
   text-decoration: none;
 }
 
@@ -62,13 +59,33 @@
   color: var(--light-beige);
   text-decoration: none;
   font-size: 20px;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .navbar-links p:hover {
+  color: var(--dark-green);
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--light-beige);
+  transition: color 0.3s ease;
+}
+
+.hamburger:hover {
   color: var(--medium-green);
+}
+
+.navbar-links.open p {
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links.open p:hover {
+  background-color: var(--medium-green);
 }
 
 .popup-container {
@@ -79,66 +96,6 @@
   width: 100%;
   font-family: "Futura";
 }
-/* 
-.log-popup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.milestory-profile-popup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.log-submit button {
-    color: white;
-    width: 100px;
-    text-decoration: none;
-    font-size: 1rem;
-    background-color: var(--navy-blue);
-    padding: 10px;
-    cursor: pointer;
-}
-
-.log-submit button:hover {
-    background-color: var(--dark-green);
-}
-
-.close-button {
-    background: none;
-    border: none;
-    font-size: 40px;
-    font-weight: bold;
-    color: var(--navy-blue);
-    padding-bottom: 1rem;
-    transition: color 0.1s;
-    padding-left: 1rem;
-}
-
-.close-button:hover {
-    color: var(--dark-green);
-} */
-
-/* .welcome {
-    color: var(--dark-gray);
-    font-family: 'Futura';
-    font-size: 2rem;
-    letter-spacing: .3rem;
-    text-transform: uppercase;
-}
-
-.tag {
-    font-family: 'Futura';
-    font-size: 1rem;
-    color: var(--dark-gray);
-    letter-spacing: .1rem;
-} */
 
 .banner {
   position: relative;
@@ -165,10 +122,10 @@
   position: absolute;
   top: 0;
   left: 10%;
-  width: 40%;
+  width: clamp(300px, 40%, 500px);
   color: var(--light-beige);
   background-color: var(--dark-green);
-  padding: 30px;
+  padding: clamp(10px, 5%, 30px);
   border-radius: 0 0 100px 0;
   font-size: 50px;
   text-align: left;
@@ -186,7 +143,7 @@
   font-size: 22px;
   text-transform: uppercase;
   border: 2px solid var(--light-beige);
-  width: 40%;
+  width: clamp(150px, 40%, 300px);
   transition: background-color 0.3s ease;
   color: var(--light-beige);
 }
@@ -219,10 +176,13 @@
 
 .homepage-images {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-left: 5%;
   margin-right: 5%;
+  width: 340;
+  height: 374;
 }
 
 .about-us-banner {
@@ -401,6 +361,8 @@
 
 .join-us {
   background-color: var(--dark-green);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .book-us-container {
@@ -408,6 +370,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .book-us {
@@ -419,6 +383,11 @@
   width: 90%;
 }
 
+.book-us-inputs {
+  display: flex;
+  gap: 1rem; /* Adjust the gap as needed */
+}
+
 .join-us-form {
   display: flex;
   flex-direction: column;
@@ -427,7 +396,8 @@
   background-color: var(--medium-green);
 }
 
-.join-us-form h1, .book-us h1 {
+.join-us-form h1,
+.book-us h1 {
   font-family: "Futura";
   width: 70%;
   color: var(--light-beige);
@@ -441,7 +411,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Futura';
+  font-family: "Futura";
   color: var(--light-beige);
 }
 
@@ -483,9 +453,10 @@
 }
 
 .submission-message {
-  font-family: 'Futura';
+  font-family: "Futura";
   font-size: 18px;
   color: var(--light-beige);
+  text-align: center;
 }
 
 .footer {
@@ -495,7 +466,7 @@
 .footer h1 {
   font-family: "Futura";
   color: var(--dark-green);
-  width: 40%;
+  width: 600px;
   margin: auto;
   font-size: 30px;
   margin-bottom: 40px;
@@ -515,24 +486,307 @@
   cursor: pointer;
 }
 
-@media (max-width: 767px) {
-  .learn-more-container {
-    width: 100%;
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575px) {
+  .navbar-logo p {
+    font-size: 8px;
   }
 
-  .learn-more h1 {
-    font-size: 24px;
-    margin-top: 50px;
+  .navbar-links {
+    display: none;
+    flex-direction: column;
   }
 
-  .learn-more p {
-    width: 100%;
-  }
-
-  .custom-shape-divider-top-1723951671 svg {
-    position: relative;
+  .hamburger {
     display: block;
-    width: calc(121% + 1.3px);
-    height: 60px;
+    position: absolute;
+    right: clamp(30px, 15%, 90px);
+    top: 20px;
+    width: 5px;
+    z-index: 999;
   }
+
+  .navbar-links.open {
+    display: flex;
+    position: absolute;
+    background-color: var(--light-green);
+    top: 0;
+    right: 0;
+    width: 50%;
+    padding-top: 50px;
+    justify-content: flex-start;
+    /* align-items: center; */
+    z-index: 998; /* To overlay other content */
+  }
+
+  .navbar-links.open p {
+    padding-left: 20px;
+    font-size: 12px;
+  }
+
+  .homepage-title,
+  .explore-section h1 {
+    font-size: 12px;
+  }
+
+  .learn-more-button {
+    font-size: 6px;
+    width: 70px;
+  }
+
+  .text-overlay {
+    width: clamp(200px, 10%, 250px);
+  }
+
+  .explore-section {
+    padding: 20px;
+  }
+
+  .explore-section p {
+    font-size: 12px;
+    width: 90%;
+  }
+
+  .about-us-values h1 {
+    font-size: 18px;
+  }
+
+  .about-us-values p {
+    font-size: 14px;
+    width: 97%;
+  }
+
+  .code-of-conduct h1 {
+    font-size: 16px;
+  }
+
+  .code-of-conduct p {
+    font-size: 14px;
+  }
+
+  .religious-concerns h1 {
+    font-size: 18px;
+    width: 97%;
+  }
+
+  .religious-concerns p {
+    font-size: 14px;
+    width: 97%;
+  }
+
+  .book-us-inputs {
+    flex-direction: column;
+    gap: 0.5rem; /* Smaller gap for stacked fields */
+  }
+
+  .join-us-form h1,
+  .book-us h1 {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .book-us-inputs p,
+  .join-us-form-inputs p {
+    font-size: 14px;
+    margin-bottom: 0; /* Space between label and input */
+  }
+
+  input,
+  select {
+    width: 100%; /* Ensures inputs span the full width on smaller screens */
+    padding: 5px;
+    max-width: 100%; /* Removes any maximum width constraint for small screens */
+  }
+
+  .requests-labels {
+    font-size: 12px;
+  }
+
+  .join-us-form-inputs textarea {
+    font-size: 10px;
+  }
+
+  .cc-text-overlay {
+    padding: 10px;
+  }
+
+  .cc-text-overlay h1 {
+    font-size: 18px;
+  }
+
+  .contact-info-section p {
+    font-size: 14px;
+  }
+
+  .footer h1 {
+    width: 250px;
+    font-size: 18px;
+  }
+
+  .footer p {
+    font-size: 12px;
+  }
+
+  .facebook-logo {
+    width: 20px;
+  }
+}
+
+/* Small devices (tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 829px) {
+  .navbar-logo p {
+    font-size: 10px;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 90px;
+    top: 20px;
+    width: 5px;
+    z-index: 999;
+  }
+
+  .navbar-links.open {
+    display: flex;
+    position: absolute;
+    background-color: var(--light-green);
+    top: 0;
+    right: 0;
+    width: 40%;
+    padding-top: 50px;
+    justify-content: flex-start;
+    /* align-items: center; */
+    z-index: 998; /* To overlay other content */
+    border: solid 2px var(--light-beige);
+  }
+
+  .navbar-links.open p {
+    padding-left: 20px;
+    font-size: 14px;
+  }
+
+  .homepage-title,
+  .explore-section h1 {
+    font-size: 24px;
+  }
+
+  .learn-more-button {
+    font-size: 16px;
+  }
+
+  .explore-section p {
+    font-size: 16px;
+  }
+
+  .footer h1 {
+    width: 350px;
+    font-size: 20px;
+  }
+
+  .footer p {
+    font-size: 14px;
+  }
+
+  .facebook-logo {
+    width: 30px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 830px) and (max-width: 991px) {
+  .navbar-logo p {
+    font-size: 12px;
+  }
+
+  .navbar-links p {
+    font-size: 14px;
+  }
+
+  .homepage-title,
+  .explore-section h1 {
+    font-size: 32px;
+  }
+
+  .learn-more-button {
+    font-size: 16px;
+  }
+
+  .explore-section p {
+    font-size: 16px;
+  }
+
+  .text-overlay {
+    width: 400px;
+  }
+
+  .footer h1 {
+    width: 450px;
+    font-size: 24px;
+  }
+
+  .footer p {
+    font-size: 16px;
+  }
+
+  .facebook-logo {
+    width: 30px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-logo p {
+    font-size: 16px;
+  }
+
+  .navbar-links p {
+    font-size: 16px;
+  }
+
+  .homepage-title {
+    font-size: 42px;
+  }
+
+  .homepage-images {
+    gap: 3px;
+  }
+
+  .learn-more-button {
+    font-size: 18px;
+  }
+
+  .text-overlay {
+    width: clamp(400px, 50%, 500px);
+  }
+
+  .explore-section h1 {
+    font-size: 42px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .navbar-logo p {
+    font-size: 16px;
+  }
+
+  .navbar-links p {
+    font-size: 18px;
+  }
+
+  .homepage-title,
+  .explore-section h1 {
+    font-size: 44px;
+  }
+}
+
+/* Extra-extra large devices (4K screens, 1600px and up) */
+@media (min-width: 1600px) {
+  /* Styles for extra-large screens and high-res monitors */
 }

@@ -15,7 +15,7 @@ const Banner = () => {
           alt="Description of the image"
         />
         <div className="text-overlay">
-          <p>EXPERIENCE THE BEAUTY OF DANCE</p>
+          <p className='homepage-title'>EXPERIENCE THE BEAUTY OF DANCE</p>
           <Link className="navbar-link" to="/about-us"><p className="learn-more-button">Learn More</p></Link>
         </div>
       </div>
@@ -32,8 +32,6 @@ const Banner = () => {
       </div>
       <div className="homepage-images">
         <svg
-          width="340"
-          height="374"
           viewBox="0 0 340 374"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -55,8 +53,6 @@ const Banner = () => {
           />
         </svg>
         <svg
-          width="340"
-          height="374"
           viewBox="0 0 340 374"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -78,8 +74,6 @@ const Banner = () => {
           />
         </svg>
         <svg
-          width="340"
-          height="374"
           viewBox="0 0 340 374"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
