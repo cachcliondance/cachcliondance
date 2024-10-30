@@ -18,7 +18,7 @@ const NavBar = () => {
       <nav>
         <div className="navbar-container">
           <div className="row align-items-center w-100">
-            <div className="col-md-3 col-5">
+            <div className="col-md-3 col-6">
               <div className="navbar-logo">
                 <Link className="navbar-link" to="/">
                   <p>
@@ -28,7 +28,7 @@ const NavBar = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-md-9 col-7">
+            <div className="col-md-9 col-6">
               <div className="hamburger" onClick={toggleMenu}>
                 &#9776;
               </div>
