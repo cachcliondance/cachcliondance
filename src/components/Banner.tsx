@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="banner">
-      <div className="homepage-banner">
+    <div>
+      <div className="banner homepage-banner">
         <img
           className="resized-image"
           src={homepageImage}
           alt="Description of the image"
         />
-        <div className="text-overlay">
+        <div className="homepage-text-overlay">
           <p className='homepage-title'>EXPERIENCE THE BEAUTY OF DANCE</p>
           <Link className="navbar-link" to="/about-us"><p className="learn-more-button">Learn More</p></Link>
         </div>

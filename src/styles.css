@@ -80,6 +80,10 @@
   color: var(--medium-green);
 }
 
+.navbar-links.open {
+  border: solid 2px var(--light-beige);
+}
+
 .navbar-links.open p {
   transition: background-color 0.3s ease;
 }
@@ -101,7 +105,6 @@
   position: relative;
   width: 100%;
   background-color: var(--dark-green);
-  padding-bottom: 50px;
 }
 
 .homepage-banner {
@@ -109,7 +112,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin: 50px; */
 }
 
 .resized-image {
@@ -118,22 +120,26 @@
   max-height: 400px;
 }
 
-.text-overlay {
+.text-overlay, .homepage-text-overlay  {
   position: absolute;
   top: 0;
   left: 10%;
   width: clamp(300px, 40%, 500px);
   color: var(--light-beige);
-  background-color: var(--dark-green);
+  background-color: rgba(57, 61, 50, 0.8);
   padding: clamp(10px, 5%, 30px);
   border-radius: 0 0 100px 0;
   font-size: 50px;
   text-align: left;
 }
 
-.text-overlay p {
+.text-overlay p, .homepage-text-overlay p{
   font-family: "Futura";
   letter-spacing: 1px;
+}
+
+.homepage-text-overlay {
+  background-color: var(--dark-green);
 }
 
 .learn-more-button {
@@ -154,8 +160,10 @@
 }
 
 .explore-section {
-  padding: 40px;
-  margin-left: 5%;
+  padding: 5%;
+  background-color: var(--medium-green);
+  position: relative;
+  width: 100%;
 }
 
 .explore-section h1 {
@@ -179,10 +187,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-left: 5%;
-  margin-right: 5%;
+  position: relative;
   width: 340;
   height: 374;
+  padding: 40px;
+  background-color: var(--dark-green);
 }
 
 .about-us-banner {
@@ -291,11 +300,11 @@
   left: 50%; /* Center horizontally */
   width: 30%;
   color: white;
-  background-color: var(--dark-green);
   transform: translate(-50%, -50%); /* Offset to center exactly */
   padding: 20px;
   font-size: 50px;
   text-align: center;
+  background-color: rgba(57, 61, 50, 0.8);
 }
 
 .cc-text-overlay h1 {
@@ -490,6 +499,7 @@
 @media (max-width: 575px) {
   .navbar-logo p {
     font-size: 10px;
+    width: 100%;
   }
 
   .navbar-links {
@@ -512,7 +522,7 @@
     background-color: var(--light-green);
     top: 0;
     right: 0;
-    width: 55%;
+    width: 60%;
     padding-top: 50px;
     justify-content: flex-start;
     /* align-items: center; */
@@ -521,21 +531,35 @@
 
   .navbar-links.open p {
     padding-left: 20px;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .homepage-title,
   .explore-section h1 {
-    font-size: 16px;
+    font-size: 20px;
+  }
+
+  .resized-image {
+    width: 100vh; /* Make the image width 100% of the container */
+    height: 100vh; /* Make the image height 100% of the container */
+    object-fit: cover; /* This maintains the aspect ratio while cropping the image */
   }
 
   .learn-more-button {
-    font-size: 10px;
-    width: 90px;
+    font-size: 16px;
+    width: 60%;
   }
 
-  .text-overlay {
-    width: clamp(200px, 10%, 250px);
+  .text-overlay, .homepage-text-overlay {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    width: 70%;
+    background-color: rgba(57, 61, 50, 0.8);
+    transform: translate(-50%, -50%); /* Offset to center exactly */
+    padding: 20px;
+    text-align: center;
+    border-radius: 0 0 0 0;
   }
 
   .explore-section {
@@ -543,7 +567,7 @@
   }
 
   .explore-section p {
-    font-size: 14px;
+    font-size: 16px;
     width: 90%;
   }
 
@@ -558,10 +582,18 @@
 
   .code-of-conduct h1 {
     font-size: 16px;
+    width: 90%;
   }
 
   .code-of-conduct p {
     font-size: 14px;
+    width: 90%;
+  }
+
+  .resized-cc-image {
+    width: 50vh; /* Make the image width 100% of the container */
+    height: auto; /* Make the image height 100% of the container */
+    object-fit: cover; /* This maintains the aspect ratio while cropping the image */
   }
 
   .religious-concerns h1 {
@@ -608,10 +640,12 @@
 
   .cc-text-overlay {
     padding: 10px;
+    width: 50%;
   }
 
   .cc-text-overlay h1 {
-    font-size: 18px;
+    font-size: 24px;
+    width: 100%;
   }
 
   .contact-info-section p {
