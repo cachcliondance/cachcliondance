@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 
 // CORS configuration
 const corsOptions = {
-  origin: "https://cachcliondragon.org", // Update this to match your React app's origin
+  origin: "https://www.cachcliondragon.org", // Update this to match your React app's origin
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Enable set cookie
 };
