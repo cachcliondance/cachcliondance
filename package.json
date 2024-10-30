@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start": "node server.js",
     "start:frontend": "vite",
     "start:backend": "node src/utils/server.js"
   },
