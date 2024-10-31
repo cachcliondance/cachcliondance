@@ -105,6 +105,7 @@
   position: relative;
   width: 100%;
   background-color: var(--dark-green);
+  padding-bottom: 5%;
 }
 
 .homepage-banner {
@@ -537,6 +538,10 @@
   .homepage-title,
   .explore-section h1 {
     font-size: 20px;
+  }
+
+  .banner {
+    padding-bottom: 0;
   }
 
   .resized-image {

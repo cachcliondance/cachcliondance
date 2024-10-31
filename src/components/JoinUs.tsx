@@ -28,7 +28,7 @@ const JoinUs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5002/api/join-us", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/join-us`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,6 +119,7 @@ const JoinUs = () => {
                   src={url}
                   alt={`Image ${index + 1}`}
                   className="grid-image"
+                  loading="lazy"
                 />
               ))}
             </div>

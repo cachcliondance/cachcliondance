@@ -10,6 +10,7 @@ const AboutUs = () => {
           className="resized-cc-image"
           src={aboutUsBanner}
           alt="Description of the image"
+          loading="lazy"
         />
         <div className="cc-text-overlay">
           <h1>About Us</h1>
@@ -22,6 +23,7 @@ const AboutUs = () => {
               className=""
               src={aboutusimg1}
               alt="Description of the image"
+              loading="lazy"
             />
           </div>
           <div className="about-us-values mission col-md-6 col-12">
@@ -69,6 +71,7 @@ const AboutUs = () => {
               className="resizeable-about-us-img"
               src={aboutusimg2}
               alt="Description of the image"
+              loading="lazy"
             />
           </div>
         </div>

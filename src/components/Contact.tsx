@@ -9,6 +9,7 @@ const Contact = () => {
           className="resized-cc-image"
           src={contactImage}
           alt="Description of the image"
+          loading="lazy"
         />
         <div className="cc-text-overlay">
           <h1>Contact</h1>

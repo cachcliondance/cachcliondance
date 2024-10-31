@@ -8,6 +8,7 @@ const CodeOfConduct = () => {
           className="resized-cc-image"
           src={codeofconductimg}
           alt="Description of the image"
+          loading="lazy"
         />
         <div className="cc-text-overlay">
           <h1>Code of Conduct</h1>

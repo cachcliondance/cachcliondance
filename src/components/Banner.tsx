@@ -13,6 +13,7 @@ const Banner = () => {
           className="resized-image"
           src={homepageImage}
           alt="Description of the image"
+          loading="lazy"
         />
         <div className="homepage-text-overlay">
           <p className='homepage-title'>EXPERIENCE THE BEAUTY OF DANCE</p>
@@ -31,69 +32,7 @@ const Banner = () => {
         </p>
       </div>
       <div className="homepage-images">
-        <svg
-          viewBox="0 0 340 374"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <clipPath id="clip-shape">
-              <path d="M339.848 186.463C339.848 399.654 351.521 372.926 170.576 372.926C-26.1286 372.926 1.30491 388.836 1.30492 186.463C1.30492 83.4823 77.0901 0 170.576 0C264.062 0 339.848 83.4823 339.848 186.463Z" />
-            </clipPath>
-          </defs>
-
-          <image
-            href={homepageImg1}
-            x="0"
-            y="0"
-            width="340"
-            height="374"
-            clip-path="url(#clip-shape)"
-            preserveAspectRatio="xMidYMid slice"
-          />
-        </svg>
-        <svg
-          viewBox="0 0 340 374"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <clipPath id="clip-shape">
-              <path d="M339.848 186.463C339.848 399.654 351.521 372.926 170.576 372.926C-26.1286 372.926 1.30491 388.836 1.30492 186.463C1.30492 83.4823 77.0901 0 170.576 0C264.062 0 339.848 83.4823 339.848 186.463Z" />
-            </clipPath>
-          </defs>
-
-          <image
-            href={homepageImg2}
-            x="0"
-            y="0"
-            width="340"
-            height="374"
-            clip-path="url(#clip-shape)"
-            preserveAspectRatio="xMidYMid slice"
-          />
-        </svg>
-        <svg
-          viewBox="0 0 340 374"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <clipPath id="clip-shape">
-              <path d="M339.848 186.463C339.848 399.654 351.521 372.926 170.576 372.926C-26.1286 372.926 1.30491 388.836 1.30492 186.463C1.30492 83.4823 77.0901 0 170.576 0C264.062 0 339.848 83.4823 339.848 186.463Z" />
-            </clipPath>
-          </defs>
-
-          <image
-            href={homepageImg3}
-            x="0"
-            y="0"
-            width="340"
-            height="374"
-            clip-path="url(#clip-shape)"
-            preserveAspectRatio="xMidYMid slice"
-          />
-        </svg>
+        
       </div>
     </div>
   );
