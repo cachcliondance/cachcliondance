@@ -108,6 +108,11 @@
   padding-bottom: 5%;
 }
 
+.banner-carousel {
+  width: 60%;
+  margin: auto;
+}
+
 .homepage-banner {
   position: relative;
   display: flex;
@@ -544,8 +549,12 @@
     padding-bottom: 0;
   }
 
+  .banner-carousel {
+    width: 90%;
+  }
+
   .resized-image {
-    width: 100vh; /* Make the image width 100% of the container */
+    width: 100%;
     height: 100vh; /* Make the image height 100% of the container */
     object-fit: cover; /* This maintains the aspect ratio while cropping the image */
   }
@@ -708,6 +717,10 @@
   .navbar-links.open p {
     padding-left: 20px;
     font-size: 14px;
+  }
+
+  .banner-carousel {
+    width: 80%;
   }
 
   .homepage-title,
