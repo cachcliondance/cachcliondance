@@ -20,7 +20,7 @@ const AboutUs = () => {
         <div className="row">
           <div className="about-us-images col-md-6 col-12">
             <img
-              className=""
+              className="resizeable-about-us-img1"
               src={aboutusimg1}
               alt="Description of the image"
               loading="lazy"
@@ -68,7 +68,7 @@ const AboutUs = () => {
           </div>
           <div className="about-us-images p-0 col-md-6 col-12">
             <img
-              className="resizeable-about-us-img"
+              className="resizeable-about-us-img2"
               src={aboutusimg2}
               alt="Description of the image"
               loading="lazy"
