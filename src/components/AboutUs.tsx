@@ -1,8 +1,44 @@
 import aboutusimg1 from "../assets/aboutus_img1.jpg";
 import aboutusimg2 from "../assets/aboutus_img2.jpg";
 import aboutUsBanner from "../assets/aboutus_banner.jpg";
+import Carousel from "react-bootstrap/Carousel";
+import aboutusImg1 from "../assets/aboutus_carousel/aboutus_1.jpg";
+import aboutusImg2 from "../assets/aboutus_carousel/aboutus_2.jpg";
+import aboutusImg3 from "../assets/aboutus_carousel/aboutus_3.jpg";
+import aboutusImg4 from "../assets/aboutus_carousel/aboutus_4.jpg";
+import aboutusImg5 from "../assets/aboutus_carousel/aboutus_5.jpg";
+import aboutusImg6 from "../assets/aboutus_carousel/aboutus_6.jpg";
+import aboutusImg7 from "../assets/aboutus_carousel/aboutus_7.jpg";
+import aboutusImg8 from "../assets/aboutus_carousel/aboutus_8.jpg";
+import aboutusImg9 from "../assets/aboutus_carousel/aboutus_9.jpg";
+import aboutusImg10 from "../assets/aboutus_carousel/aboutus_10.jpg";
+import aboutusImg11 from "../assets/aboutus_carousel/aboutus_11.jpg";
+import aboutusImg12 from "../assets/aboutus_carousel/aboutus_12.jpg";
+import aboutusImg13 from "../assets/aboutus_carousel/aboutus_13.jpg";
+import aboutusImg14 from "../assets/aboutus_carousel/aboutus_14.jpg";
+import aboutusImg15 from "../assets/aboutus_carousel/aboutus_15.jpg";
+import aboutusImg16 from "../assets/aboutus_carousel/aboutus_16.jpg";
 
 const AboutUs = () => {
+  const images = [
+    { src: aboutusImg1, alt: "About Us Image" },
+    { src: aboutusImg2, alt: "About Us Image" },
+    { src: aboutusImg3, alt: "About Us Image" },
+    { src: aboutusImg4, alt: "About Us Image" },
+    { src: aboutusImg5, alt: "About Us Image" },
+    { src: aboutusImg6, alt: "About Us Image" },
+    { src: aboutusImg7, alt: "About Us Image" },
+    { src: aboutusImg8, alt: "About Us Image" },
+    { src: aboutusImg9, alt: "About Us Image" },
+    { src: aboutusImg10, alt: "About Us Image" },
+    { src: aboutusImg11, alt: "About Us Image" },
+    { src: aboutusImg12, alt: "About Us Image" },
+    { src: aboutusImg13, alt: "About Us Image" },
+    { src: aboutusImg14, alt: "About Us Image" },
+    { src: aboutusImg15, alt: "About Us Image" },
+    { src: aboutusImg16, alt: "About Us Image" },
+  ];
+
   return (
     <div>
       <div className="about-us-banner">
@@ -66,13 +102,19 @@ const AboutUs = () => {
               and everyone!
             </p>
           </div>
-          <div className="about-us-images p-0 col-md-6 col-12">
-            <img
-              className="resizeable-about-us-img2"
-              src={aboutusimg2}
-              alt="Description of the image"
-              loading="lazy"
-            />
+          <div className='col-md-6 col-12 d-flex align-items-center justify-content-center' style={{ backgroundColor: "#676758", paddingBottom: "50px" }}>
+            <Carousel className="aboutus-carousel">
+              {images.map((image, index) => (
+                <Carousel.Item key={index}>
+                  <img
+                    className="banner-carousel-images d-block w-100"
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                  />
+                </Carousel.Item>
+              ))}
+            </Carousel>
           </div>
         </div>
       </div>
