@@ -1,5 +1,4 @@
 import aboutusimg1 from "../assets/aboutus_img1.jpg";
-import aboutusimg2 from "../assets/aboutus_img2.jpg";
 import aboutUsBanner from "../assets/aboutus_banner.jpg";
 import Carousel from "react-bootstrap/Carousel";
 import aboutusImg1 from "../assets/aboutus_carousel/aboutus_1.jpg";
