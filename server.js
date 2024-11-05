@@ -91,7 +91,7 @@ app.post("/api/book-us", (req, res) => {
   // Send email
   const mailOptions = {
     from: 'cachcliondance@gmail.com',
-    to: 'katrinango3388@gmail.com', 
+    to: 'pvo15@yahoo.com', 
     subject: 'New Event Book Submission',
     text: `A new event form submission has been filled out from the website. Here are the details of the requested event:
     \n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent Date: ${eventDate}\nEvent Time: ${eventTime}\nEvent Type: ${eventType}\nPerformance Request(s): ${performanceRequests}\nLocation: ${location}\nAdditional: ${additional}`,

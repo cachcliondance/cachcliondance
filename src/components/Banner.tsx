@@ -53,7 +53,7 @@ const Banner = () => {
           Asian Cultural Heritage Center Dragon and Lion Dance Troupe is a
           non-profit organization made up of dedicated volunteers, that is
           comprised of friends, students and young professionals from different
-          ethnicities. It is an organization dedicated to promoting and
+          ethnicities, backgrounds, and life experiences. It is an organization dedicated to promoting and
           introducing the sport and art of dragon and lion dance, health,
           wellness, and the Asian culture.
         </p>
