@@ -500,7 +500,14 @@
   color: var(--medium-green);
 }
 
-.facebook-logo {
+.social-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+}
+
+.facebook-logo, .instagram-logo {
   width: 40px;
 }
 
@@ -691,7 +698,7 @@
     font-size: 12px;
   }
 
-  .facebook-logo {
+  .facebook-logo, .instagram-logo {
     width: 20px;
   }
 }
@@ -761,7 +768,7 @@
     font-size: 14px;
   }
 
-  .facebook-logo {
+  .facebook-logo, .instagram-logo {
     width: 30px;
   }
 }
@@ -802,7 +809,7 @@
     font-size: 16px;
   }
 
-  .facebook-logo {
+  .facebook-logo, .instagram-logo {
     width: 30px;
   }
 }

@@ -22,8 +22,8 @@ const NavBar = () => {
               <div className="navbar-logo">
                 <Link className="navbar-link" to="/">
                   <p>
-                    COLORADO ASIAN CULTURAL HERITAGE CENTER DRAGON AND LION
-                    DANCE TROUPE
+                    COLORADO CULTURAL HERITAGE CENTER DRAGON AND LION
+                    DANCE ASSOCIATION
                   </p>
                 </Link>
               </div>

@@ -6,8 +6,6 @@ import aboutusImg2 from "../assets/aboutus_carousel/aboutus_2.jpg";
 import aboutusImg3 from "../assets/aboutus_carousel/aboutus_3.jpg";
 import aboutusImg4 from "../assets/aboutus_carousel/aboutus_4.jpg";
 import aboutusImg5 from "../assets/aboutus_carousel/aboutus_5.jpg";
-import aboutusImg6 from "../assets/aboutus_carousel/aboutus_6.jpg";
-import aboutusImg7 from "../assets/aboutus_carousel/aboutus_7.jpg";
 import aboutusImg8 from "../assets/aboutus_carousel/aboutus_8.jpg";
 import aboutusImg9 from "../assets/aboutus_carousel/aboutus_9.jpg";
 import aboutusImg10 from "../assets/aboutus_carousel/aboutus_10.jpg";
@@ -25,8 +23,6 @@ const AboutUs = () => {
     { src: aboutusImg3, alt: "About Us Image" },
     { src: aboutusImg4, alt: "About Us Image" },
     { src: aboutusImg5, alt: "About Us Image" },
-    { src: aboutusImg6, alt: "About Us Image" },
-    { src: aboutusImg7, alt: "About Us Image" },
     { src: aboutusImg8, alt: "About Us Image" },
     { src: aboutusImg9, alt: "About Us Image" },
     { src: aboutusImg10, alt: "About Us Image" },

@@ -21,53 +21,51 @@ const CodeOfConduct = () => {
           following rules before you want to join our troupe:
         </h1>
         <p>
-          1. Show respect to the public, your parents, instructors, and
-          teammates. Inappropriate behavior is absolutely NOT allowed when you
-          are with the team. ​<br></br>
+          1. Treat the public, instructors, and teammates with kindness and
+          respect at all times. Maintain positive and appropriate behavior
+          whenever you are with the team. ​<br></br>
           <br></br>
-          2. Pay attention at all times and train as hard and as often as you
-          can to improve your skills and to build up your physical condition. DO
-          NOT TALK while your assigned instructors, senior members or teammates
-          are explaining or demonstrating a technique to you, and, DO NOT TALK
-          BACK if you are asked to train with them. ​​<br></br>
+          2. Be attentive during training and make the most of your time to
+          enhance your skills and physical conditioning. When instructors,
+          senior members, or teammates are explaining or demonstrating, please
+          listen carefully and avoid side conversations. Train collaboratively
+          and with an open mind. ​​<br></br>
           <br></br>
-          3. Respect the training hall and its contents. No food, gum, or sugar
-          beverages are allowed at the training gym. Water only please. ​
+          3. Help keep the training hall clean and safe by refraining from
+          bringing food, gum, or sugary beverages. Water is welcome to keep you
+          hydrated. ​<br></br>
+          <br></br>​ 4. Always act in a way that reflects positively on the
+          organization and its members. Use kind and respectful language and
+          avoid any inappropriate words or actions. ​<br></br>
+          <br></br>​ 5. Be humble and respectful towards other Martial Arts
+          disciplines, dragon and lion dance groups, their instructors, and
+          their unique styles of practice. ​​<br></br>
           <br></br>
-          <br></br>​ 4. Always conduct yourself in a proper and sensible manner.
-          Do not say or do anything to disgrace the organization or its members.
-          No bad words or cursing AT ALL TIMES. ​<br></br>
-          <br></br>​ 5. Never be so proud that you show disrespect for other
-          forms of Martial Arts, dragon and lion dance groups, their
-          instructors, members, and dancing styles. ​​<br></br>
+          6. For safety, avoid wearing jewelry during training or performances.
+          Arrive on time and lend a hand with setting up and cleaning up
+          equipment to ensure a smooth session. ​<br></br>
+          <br></br>​ 7. Wear uniforms or clothing that reflects respect for
+          yourself and the community during training and performances. Avoid
+          tank tops, sleeveless tops, cropped shirts, tight pants, or low-rise
+          jeans. T-shirts, sweatpants, and tennis shoes are highly recommended
+          for practice. ​​<br></br>
           <br></br>
-          6. No jewelry during training or performances to avoid injuries.
-          Always try to be on time to the practice or performance. EVERY MEMBER
-          MUST quickly help to set up the equipment and to clean up after each
-          practice or performance. ​<br></br>
-          <br></br>​ 7. Proper uniform or attire to be worn during training
-          and/or performances. Attire should reflect a self-respect that is
-          expected by the community. NO tank tops, sleeveless tops, half shirts,
-          tight pants, and low riding jeans at practice or performance.
-          T-shirts, sweat pants, and tennis shoes are HIGHLY recommended for
-          practice. ​​<br></br>
+          8. Aim to be on time and let your instructors know in advance if you
+          are unable to attend a practice or performance. Communication shows
+          respect for your teammates and the effort everyone puts in. ​​
           <br></br>
-          8. Try your best not to be tardy. Tardiness or absences without
-          notification is a sign of disrespect to yourself, the instructors, and
-          your teammates. Please do not hesitate to call ahead to notify your
-          instructors if you cannot attend the practice and can or cannot attend
-          the performance within 2 days. ​​<br></br>
           <br></br>
-          9. Do not instruct, or handle equipment in the training hall without
-          the permission of the instructors. Equipment is very expensive, please
-          take good care of it. Always check and make sure that nothing is left
-          behind after each practice or performance. ​​<br></br>
+          9. Treat all equipment gently and with care, as it is essential and
+          valuable to the team. Be mindful of how you use it to prevent damage.
+          Everyone is encouraged to pitch in by helping set up and take down
+          equipment before and after each practice or performance. Teamwork
+          ensures everything runs smoothly and efficiently. ​​
           <br></br>
-          10. The instructors of the center will train you in the position,
-          skill level or ability as age and ability allow. As skill improves, or
-          as growth allows, the instructors may move you into more positions.
-          Senior performers may be trained in all factions of the troupe. This
-          is done by earning the positions, and not by right.
+          <br></br>
+          10. Instructors will guide you to roles that align with your current
+          skills, age, and abilities. As you grow and improve, you may be
+          offered new opportunities to take on additional responsibilities.
+          Advancing within the team is achieved through effort and dedication.
         </p>
       </div>
       <div className="religious-concerns">
