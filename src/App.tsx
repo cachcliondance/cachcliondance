@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
@@ -8,8 +8,18 @@ import CodeOfConduct from "./components/CodeOfConduct";
 import Contact from "./components/Contact";
 import JoinUs from "./components/JoinUs";
 import BookUs from "./components/BookUs";
+import Gallery from "./components/Gallery";
 
 const App: React.FC = () => {
+  const [photoUrls, setPhotoUrls] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Fetch the list of uploaded photos from the backend
+    fetch("http://localhost:5002/api/photos")
+      .then((response) => response.json())
+      .then((data) => setPhotoUrls(data.photos))
+      .catch((error) => console.error("Error fetching photos:", error));
+  }, []);
 
   return (
     <Router>
@@ -28,6 +38,7 @@ const App: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/join-us" element={<JoinUs />} />
         <Route path="/book-us" element={<BookUs />} />
+        <Route path="/gallery" element={<Gallery photos={photoUrls} />} />
       </Routes>
       <Footer />
     </Router>

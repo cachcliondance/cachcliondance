@@ -2,9 +2,10 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import dotenv from "dotenv";
+import path from "path";
+import multer from "multer";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
@@ -16,25 +17,73 @@ const __dirname = path.dirname(__filename);
 
 // CORS configuration
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://www.cachcliondragon.org", "https://cachcliondragon.org"],
+  origin: [
+    "http://localhost:5173",
+    "https://www.cachcliondragon.org",
+    "https://cachcliondragon.org",
+  ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"], 
-  optionsSuccessStatus: 200
+  allowedHeaders: ["Content-Type", "Authorization"],
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Serve static files from the Vite build directory
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, "dist")));
+
+// Multer configuration for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "/uploads")); // Save files in the 'uploads' directory
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname); // Rename file to avoid collisions
+  },
+});
+const upload = multer({ storage });
+
+// Create the uploads directory if it doesn't exist
+import fs from "fs";
+const uploadsDir = path.join(__dirname, "/uploads");
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
+
+// Route to handle file uploads
+app.post("/api/upload", upload.single("photo"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No file uploaded." });
+  }
+
+  const filePath = `/uploads/${req.file.filename}`;
+  res.json({ message: "File uploaded successfully", filePath });
+});
+
+// Route to serve uploaded files
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+app.get('/api/photos', (req, res) => {
+  const uploadsDir = path.join(__dirname, '/uploads');
+  fs.readdir(uploadsDir, (err, files) => {
+    if (err) {
+      return res.status(500).json({ error: "Failed to read upload directory" });
+    }
+
+    // Map files to their accessible URLs
+    const fileUrls = files.map(file => `/uploads/${file}`);
+    res.json({ photos: fileUrls });
+  });
+});
 
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS ,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -53,9 +102,9 @@ app.post("/api/join-us", (req, res) => {
 
   // Send email
   const mailOptions = {
-    from: 'cachcliondance@gmail.com',
-    to: 'pvo15@yahoo.com', 
-    subject: 'New Team Interest Submission - Join Us Form',
+    from: "cachcliondance@gmail.com",
+    to: "pvo15@yahoo.com",
+    subject: "New Team Interest Submission - Join Us Form",
     text: `A new “Join Us” form submission has just come through filled out from the website. Here are the details of the potential team member:\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}`,
   };
 
@@ -65,7 +114,10 @@ app.post("/api/join-us", (req, res) => {
       return res.status(500).json({ error: "Failed to send email." });
     }
     console.log("Email sent: " + info.response);
-    res.json({ message: "Join Us form submitted successfully", data: req.body });
+    res.json({
+      message: "Join Us form submitted successfully",
+      data: req.body,
+    });
   });
 });
 
@@ -84,15 +136,25 @@ app.post("/api/book-us", (req, res) => {
     additional,
   } = req.body;
 
-  if (!name || !email || !phone || !eventName || !eventDate || !eventTime || !eventType || !performanceRequests || !location) {
+  if (
+    !name ||
+    !email ||
+    !phone ||
+    !eventName ||
+    !eventDate ||
+    !eventTime ||
+    !eventType ||
+    !performanceRequests ||
+    !location
+  ) {
     return res.status(400).json({ error: "All fields are required." });
   }
 
   // Send email
   const mailOptions = {
-    from: 'cachcliondance@gmail.com',
-    to: 'pvo15@yahoo.com', 
-    subject: 'New Event Book Submission',
+    from: "cachcliondance@gmail.com",
+    to: "pvo15@yahoo.com",
+    subject: "New Event Book Submission",
     text: `A new event form submission has been filled out from the website. Here are the details of the requested event:
     \n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent Date: ${eventDate}\nEvent Time: ${eventTime}\nEvent Type: ${eventType}\nPerformance Request(s): ${performanceRequests}\nLocation: ${location}\nAdditional: ${additional}`,
   };
@@ -103,13 +165,16 @@ app.post("/api/book-us", (req, res) => {
       return res.status(500).json({ error: "Failed to send email." });
     }
     console.log("Email sent: " + info.response);
-    res.json({ message: "Book Us form submitted successfully", data: req.body });
+    res.json({
+      message: "Book Us form submitted successfully",
+      data: req.body,
+    });
   });
 });
 
 // The "catchall" handler: for any request that doesn't match one above, send back the Vite app's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 // Start the server
