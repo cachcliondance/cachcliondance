@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles.css";
-import FileUploader from "./FileUploader";
 
 interface GalleryProps {
   photos: string[];
@@ -16,7 +15,6 @@ const Gallery: React.FC<GalleryProps> = ({ photos }) => {
           </div>
         ))}
       </div>
-      <FileUploader />
     </div>
   );
 };
