@@ -15,7 +15,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // Fetch the list of uploaded photos from the backend
-    fetch("http://localhost:5002/api/photos")
+    fetch(`${process.env.REACT_APP_API_URL}/api/photos`)
       .then((response) => response.json())
       .then((data) => setPhotoUrls(data.photos))
       .catch((error) => console.error("Error fetching photos:", error));
