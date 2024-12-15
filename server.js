@@ -34,8 +34,6 @@ app.use(bodyParser.json());
 // Serve static files from the Vite build directory
 app.use(express.static(path.join(__dirname, "dist")));
 
-console.log(__dirname + "/uploads");
-
 // Multer configuration for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -53,7 +51,6 @@ const uploadsDir = path.join(__dirname, "/uploads");
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
-console.log("Uploads directory:", uploadsDir);
 
 
 // Route to handle file uploads
@@ -61,6 +58,9 @@ app.post("/api/upload", upload.single("photo"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
   }
+
+  console.log(__dirname + "/uploads");
+  console.log("Uploads directory:", uploadsDir);
 
   const filePath = `/uploads/${req.file.filename}`;
   res.json({ message: "File uploaded successfully", filePath });
