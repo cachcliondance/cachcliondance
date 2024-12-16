@@ -21,6 +21,7 @@ const corsOptions = {
     "http://localhost:5173",
     "https://www.cachcliondragon.org",
     "https://cachcliondragon.org",
+    "https://cachcphotouploader.netlify.app",
   ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
