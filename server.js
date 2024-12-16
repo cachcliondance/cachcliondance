@@ -35,6 +35,27 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "dist")));
 console.log(__dirname + "/uploads");
 
+// Function to clear files in the uploads folder
+function clearUploadsFolder() {
+  fs.readdir(uploadsDir, (err, files) => {
+    if (err) {
+      console.error("Failed to read uploads folder:", err);
+      return;
+    }
+
+    files.forEach((file) => {
+      const filePath = path.join(uploadsDir, file);
+      fs.unlink(filePath, (unlinkErr) => {
+        if (unlinkErr) {
+          console.error(`Failed to delete file: ${filePath}`, unlinkErr);
+        } else {
+          console.log(`Deleted file: ${filePath}`);
+        }
+      });
+    });
+  });
+}
+
 // Multer configuration for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -45,6 +66,26 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+
+// Route to delete all files in the uploads folder
+app.delete("/api/clear-uploads", (req, res) => {
+  fs.readdir(uploadsDir, (err, files) => {
+    if (err) {
+      return res.status(500).json({ error: "Failed to read uploads folder" });
+    }
+
+    files.forEach((file) => {
+      const filePath = path.join(uploadsDir, file);
+      fs.unlink(filePath, (unlinkErr) => {
+        if (unlinkErr) {
+          console.error(`Failed to delete file: ${filePath}`, unlinkErr);
+        }
+      });
+    });
+
+    res.json({ message: "Uploads folder cleared successfully" });
+  });
+});
 
 // Create the uploads directory if it doesn't exist
 import fs from "fs";
