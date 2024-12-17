@@ -96,15 +96,13 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Route to handle file uploads
-app.post("/api/upload", upload.single("photo"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded." });
+app.post("/api/upload", upload.array("photos", 10), (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ error: "No files uploaded." });
   }
 
-  console.log("File upload API called");
-
-  const filePath = `/uploads/${req.file.filename}`;
-  res.json({ message: "File uploaded successfully", filePath });
+  console.log("Files uploaded:", req.files);
+  res.json({ message: "Files uploaded successfully" });
 });
 
 // Route to serve uploaded files
