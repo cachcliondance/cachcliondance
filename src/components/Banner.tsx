@@ -3,10 +3,7 @@ import homepageImage from "../assets/homepage_banner.jpg";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import homepageImg1 from "../assets/homepage_carousel/homepage_carousel1.jpg"
-import homepageImg2 from "../assets/homepage_carousel/homepage_carousel2.jpg"
 import homepageImg3 from "../assets/homepage_carousel/homepage_carousel3.jpg"
-import homepageImg4 from "../assets/homepage_carousel/homepage_carousel4.jpg"
-import homepageImg5 from "../assets/homepage_carousel/homepage_carousel5.jpg"
 import homepageImg8 from "../assets/homepage_carousel/homepage_carousel8.jpg"
 import homepageImg9 from "../assets/homepage_carousel/homepage_carousel9.jpg"
 import homepageImg10 from "../assets/homepage_carousel/homepage_carousel10.jpg"
@@ -18,10 +15,7 @@ import homepageImg16 from "../assets/homepage_carousel/homepage_carousel16.jpg"
 const Banner = () => {
   const images = [
     { src: homepageImg1, alt: "Homepage Image" },
-    { src: homepageImg2, alt: "Homepage Image" },
     { src: homepageImg3, alt: "Homepage Image" },
-    { src: homepageImg4, alt: "Homepage Image" },
-    { src: homepageImg5, alt: "Homepage Image" },
     { src: homepageImg8, alt: "Homepage Image" },
     { src: homepageImg9, alt: "Homepage Image" },
     { src: homepageImg10, alt: "Homepage Image" },

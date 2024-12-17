@@ -84,7 +84,7 @@ app.delete("/api/clear-uploads", (req, res) => {
       });
     });
 
-    res.json({ message: "Uploads folder cleared successfully" });
+    res.json({ message: "Gallery cleared successfully" });
   });
 });
 
