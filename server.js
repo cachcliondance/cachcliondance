@@ -88,6 +88,21 @@ app.delete("/api/clear-uploads", (req, res) => {
   });
 });
 
+// Route to delete a specific photo
+app.delete("/api/photo/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join(uploadsDir, filename);
+
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error(`Failed to delete file: ${filePath}`, err);
+      return res.status(500).json({ error: "Failed to delete file." });
+    }
+    res.json({ message: "File deleted successfully." });
+  });
+});
+
+
 // Create the uploads directory if it doesn't exist
 import fs from "fs";
 const uploadsDir = path.join(__dirname, "/uploads");
@@ -101,9 +116,16 @@ app.post("/api/upload", upload.array("photos", 10), (req, res) => {
     return res.status(400).json({ error: "No files uploaded." });
   }
 
+  const fileDetails = req.files.map(file => ({
+    originalName: file.originalname,
+    storedName: file.filename,
+    url: `/uploads/${file.filename}`,
+  }));
+
   console.log("Files uploaded:", req.files);
-  res.json({ message: "Files uploaded successfully" });
+  res.json({ message: "Files uploaded successfully", files: fileDetails });
 });
+
 
 // Route to serve uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
