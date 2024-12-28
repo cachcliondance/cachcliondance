@@ -126,6 +126,23 @@ app.post("/api/upload", upload.array("photos", 10), (req, res) => {
   res.json({ message: "Files uploaded successfully", files: fileDetails });
 });
 
+app.get("/api/uploads", (req, res) => {
+  const uploadsDir = path.join(__dirname, "/uploads");
+
+  fs.readdir(uploadsDir, (err, files) => {
+    if (err) {
+      console.error("Failed to read uploads directory:", err);
+      return res.status(500).json({ error: "Failed to retrieve uploads." });
+    }
+
+    const fileDetails = files.map((file) => ({
+      id: file,
+      url: `/uploads/${file}`,
+    }));
+
+    res.json({ files: fileDetails });
+  });
+});
 
 // Route to serve uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
