@@ -6,10 +6,25 @@ import dotenv from "dotenv";
 import path from "path";
 import multer from "multer";
 import { fileURLToPath } from "url";
+import mongoose from 'mongoose';
 
 dotenv.config();
 const app = express();
 const PORT = 5002; // Ensure the server runs on a separate port
+
+mongoose.connect("mongodb://localhost:27017/demo", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const imageSchema = new mongoose.Schema({
+  originalName: String,
+  storedName: String,
+  url: String,
+  uploadedAt: { type: Date, default: Date.now }
+});
+
+const Image = mongoose.model('Image', imageSchema);
 
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -89,17 +104,33 @@ app.delete("/api/clear-uploads", (req, res) => {
 });
 
 // Route to delete a specific photo
-app.delete("/api/photo/:filename", (req, res) => {
+// app.delete("/api/photo/:filename", (req, res) => {
+//   const filename = req.params.filename;
+//   const filePath = path.join(uploadsDir, filename);
+
+//   fs.unlink(filePath, (err) => {
+//     if (err) {
+//       console.error(`Failed to delete file: ${filePath}`, err);
+//       return res.status(500).json({ error: "Failed to delete file." });
+//     }
+//     res.json({ message: "File deleted successfully." });
+//   });
+// });
+
+app.delete("/api/photo/:filename", async (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(uploadsDir, filename);
 
-  fs.unlink(filePath, (err) => {
-    if (err) {
-      console.error(`Failed to delete file: ${filePath}`, err);
-      return res.status(500).json({ error: "Failed to delete file." });
-    }
+  try {
+    // Delete the file from the server
+    await fs.unlink(filePath);
+    // Delete the metadata from the database
+    await Image.deleteOne({ storedName: filename });
     res.json({ message: "File deleted successfully." });
-  });
+  } catch (error) {
+    console.error(`Failed to delete file: ${filePath}`, error);
+    res.status(500).json({ error: "Failed to delete file." });
+  }
 });
 
 
@@ -111,7 +142,22 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Route to handle file uploads
-app.post("/api/upload", upload.array("photos", 10), (req, res) => {
+// app.post("/api/upload", upload.array("photos", 10), (req, res) => {
+//   if (!req.files || req.files.length === 0) {
+//     return res.status(400).json({ error: "No files uploaded." });
+//   }
+
+//   const fileDetails = req.files.map(file => ({
+//     originalName: file.originalname,
+//     storedName: file.filename,
+//     url: `/uploads/${file.filename}`,
+//   }));
+
+//   console.log("Files uploaded:", req.files);
+//   res.json({ message: "Files uploaded successfully", files: fileDetails });
+// });
+
+app.post("/api/upload", upload.array("photos", 10), async (req, res) => {
   if (!req.files || req.files.length === 0) {
     return res.status(400).json({ error: "No files uploaded." });
   }
@@ -119,29 +165,45 @@ app.post("/api/upload", upload.array("photos", 10), (req, res) => {
   const fileDetails = req.files.map(file => ({
     originalName: file.originalname,
     storedName: file.filename,
-    url: `/uploads/${file.filename}`,
+    url: `/uploads/${file.filename}`
   }));
 
-  console.log("Files uploaded:", req.files);
-  res.json({ message: "Files uploaded successfully", files: fileDetails });
+  try {
+    // Save metadata to the database
+    const savedFiles = await Image.insertMany(fileDetails);
+    res.json({ message: "Files uploaded successfully", files: savedFiles });
+  } catch (error) {
+    console.error("Error saving to database:", error);
+    res.status(500).json({ error: "Failed to save file metadata." });
+  }
 });
 
-app.get("/api/uploads", (req, res) => {
-  const uploadsDir = path.join(__dirname, "/uploads");
+// app.get("/api/uploads", (req, res) => {
+//   const uploadsDir = path.join(__dirname, "/uploads");
 
-  fs.readdir(uploadsDir, (err, files) => {
-    if (err) {
-      console.error("Failed to read uploads directory:", err);
-      return res.status(500).json({ error: "Failed to retrieve uploads." });
-    }
+//   fs.readdir(uploadsDir, (err, files) => {
+//     if (err) {
+//       console.error("Failed to read uploads directory:", err);
+//       return res.status(500).json({ error: "Failed to retrieve uploads." });
+//     }
 
-    const fileDetails = files.map((file) => ({
-      id: file,
-      url: `/uploads/${file}`,
-    }));
+//     const fileDetails = files.map((file) => ({
+//       id: file,
+//       url: `/uploads/${file}`,
+//     }));
 
-    res.json({ files: fileDetails });
-  });
+//     res.json({ files: fileDetails });
+//   });
+// });
+
+app.get("/api/uploads", async (req, res) => {
+  try {
+    const files = await Image.find();
+    res.json({ files });
+  } catch (error) {
+    console.error("Error retrieving files:", error);
+    res.status(500).json({ error: "Failed to retrieve uploads." });
+  }
 });
 
 // Route to serve uploaded files
