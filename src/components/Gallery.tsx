@@ -1,20 +1,12 @@
-import React from "react";
 import "../styles.css";
 
-interface GalleryProps {
-  photos: string[];
-}
-
-const Gallery: React.FC<GalleryProps> = ({ photos }) => {
+const Gallery = () => {
   return (
     <div>
-      <div className="gallery">
-        {photos.map((photo, index) => (
-          <div key={index} className="gallery-item">
-            <img src={photo} alt={`Gallery item ${index + 1}`} />
-          </div>
-        ))}
-      </div>
+      <iframe
+        src="https://widget.tagembed.com/2148630"
+        style={{ border: "none", width: "100%", height: "600px" }}
+      ></iframe>
     </div>
   );
 };
