@@ -248,35 +248,70 @@ app.post("/api/join-us-test", (req, res) => {
 });
 
 // Route for JoinUs form submission
-app.post("/api/join-us", (req, res) => {
-  console.log("join-us body:", req.body);
+// app.post("/api/join-us", (req, res) => {
+//   console.log("join-us body:", req.body);
 
-  const { name, age, email, phone } = req.body;
+//   const { name, age, email, phone } = req.body;
 
-  if (!name || !age || !email || !phone) {
-    return res.status(400).json({ error: "All fields are required." });
-  }
+//   if (!name || !age || !email || !phone) {
+//     return res.status(400).json({ error: "All fields are required." });
+//   }
 
-  // Send email
-  const mailOptions = {
-    from: "cachcliondance@gmail.com",
-    to: "katrinango3388@gmail.com",
-    subject: "New Team Interest Submission - Join Us Form",
-    text: `A new “Join Us” form submission has just come through filled out from the website. Here are the details of the potential team member:\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}`,
-  };
+//   // Send email
+//   const mailOptions = {
+//     from: "cachcliondance@gmail.com",
+//     to: "katrinango3388@gmail.com",
+//     subject: "New Team Interest Submission - Join Us Form",
+//     text: `A new “Join Us” form submission has just come through filled out from the website. Here are the details of the potential team member:\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}`,
+//   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("Error sending email:", error);
-      return res.status(500).json({ error: "Failed to send email." });
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       console.error("Error sending email:", error);
+//       return res.status(500).json({ error: "Failed to send email." });
+//     }
+//     console.log("Email sent: " + info.response);
+//     res.json({
+//       message: "Join Us form submitted successfully",
+//       data: req.body,
+//     });
+//   });
+// });
+
+app.post("/api/join-us", async (req, res) => {
+  try {
+    console.log("POST /api/join-us body:", req.body);
+
+    const { name, age, email, phone } = req.body;
+
+    if (!name || !age || !email || !phone) {
+      return res.status(400).json({ error: "All fields are required." });
     }
-    console.log("Email sent: " + info.response);
-    res.json({
-      message: "Join Us form submitted successfully",
-      data: req.body,
-    });
-  });
+
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error("Missing EMAIL_USER or EMAIL_PASS in environment");
+      return res.status(500).json({ error: "Email service not configured." });
+    }
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: "katrinango3388@gmail.com",
+      subject: "New Team Interest Submission - Join Us Form",
+      text:
+        `New Join Us submission:\n\n` +
+        `Name: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n`,
+    };
+
+    // Send email (await lets us catch failures reliably)
+    await transporter.sendMail(mailOptions);
+
+    return res.json({ message: "Join Us form submitted successfully" });
+  } catch (err) {
+    console.error("join-us error:", err);
+    return res.status(500).json({ error: "Failed to send email." });
+  }
 });
+
 
 // Route for BookUs form submission
 app.post("/api/book-us", (req, res) => {
@@ -331,6 +366,16 @@ app.post("/api/book-us", (req, res) => {
 
 app.get("/api/ping", (req, res) => {
   res.json({ ok: true });
+});
+
+app.get("/api/email-health", async (req, res) => {
+  try {
+    await transporter.verify();
+    res.json({ ok: true });
+  } catch (e) {
+    console.error("email verify failed:", e);
+    res.status(500).json({ ok: false, error: String(e) });
+  }
 });
 
 
