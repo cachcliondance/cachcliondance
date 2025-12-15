@@ -273,7 +273,7 @@ app.post("/api/join-us", async (req, res) => {
     }
 
     await resend.emails.send({
-      from: "CACHC Lion Dance <cachcliondragon.org>",
+      from: "CACHC Lion Dance <team@cachcliondragon.org>",
       to: ["katrinango3388@gmail.com"],
       cc: ["cachcliondance@gmail.com"], 
       subject: "New Team Interest Submission - Join Us Form",
