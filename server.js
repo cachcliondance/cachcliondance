@@ -292,37 +292,60 @@ app.post("/api/join-us-test", (req, res) => {
 //   });
 // });
 
+// app.post("/api/join-us", async (req, res) => {
+//   try {
+//     console.log("POST /api/join-us body:", req.body);
+
+//     const { name, age, email, phone } = req.body;
+
+//     if (!name || !age || !email || !phone) {
+//       return res.status(400).json({ error: "All fields are required." });
+//     }
+
+//     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+//       console.error("Missing EMAIL_USER or EMAIL_PASS in environment");
+//       return res.status(500).json({ error: "Email service not configured." });
+//     }
+
+//     const mailOptions = {
+//       from: process.env.EMAIL_USER,
+//       to: "katrinango3388@gmail.com",
+//       subject: "New Team Interest Submission - Join Us Form",
+//       text:
+//         `New Join Us submission:\n\n` +
+//         `Name: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n`,
+//     };
+
+//     // Send email (await lets us catch failures reliably)
+//     await transporter.sendMail(mailOptions);
+
+//     return res.json({ message: "Join Us form submitted successfully" });
+//   } catch (err) {
+//     console.error("join-us error:", err);
+//     return res.status(500).json({ error: "Failed to send email." });
+//   }
+// });
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 app.post("/api/join-us", async (req, res) => {
   try {
-    console.log("POST /api/join-us body:", req.body);
-
     const { name, age, email, phone } = req.body;
-
     if (!name || !age || !email || !phone) {
       return res.status(400).json({ error: "All fields are required." });
     }
 
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error("Missing EMAIL_USER or EMAIL_PASS in environment");
-      return res.status(500).json({ error: "Email service not configured." });
-    }
-
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: "katrinango3388@gmail.com",
+    await resend.emails.send({
+      from: "CACHC Lion Dance <onboarding@resend.dev>", // later you can use your domain
+      to: ["katrinango3388@gmail.com"],
       subject: "New Team Interest Submission - Join Us Form",
-      text:
-        `New Join Us submission:\n\n` +
-        `Name: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n`,
-    };
+      text: `Name: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n`,
+    });
 
-    // Send email (await lets us catch failures reliably)
-    await transporter.sendMail(mailOptions);
-
-    return res.json({ message: "Join Us form submitted successfully" });
-  } catch (err) {
-    console.error("join-us error:", err);
-    return res.status(500).json({ error: "Failed to send email." });
+    res.json({ message: "Submitted successfully" });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: "Failed to send email." });
   }
 });
 
