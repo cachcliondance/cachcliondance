@@ -29,6 +29,8 @@ const JoinUs = () => {
     e.preventDefault();
 
     try {
+      console.log("Posting to:", "/api/join-us");
+
       const response = await fetch("/api/join-us", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

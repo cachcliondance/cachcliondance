@@ -10,7 +10,8 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
-const PORT = 5002; // Ensure the server runs on a separate port
+const PORT = process.env.PORT || 5002;
+// const PORT = 5002; // Ensure the server runs on a separate port
 
 // mongoose.connect("mongodb://localhost:27017/demo", {
 //   useNewUrlParser: true,
@@ -316,6 +317,11 @@ app.post("/api/book-us", (req, res) => {
   });
 });
 
+app.get("/api/ping", (req, res) => {
+  res.json({ ok: true });
+});
+
+
 // The "catchall" handler: for any request that doesn't match one above, send back the Vite app's index.html file.
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
@@ -323,5 +329,5 @@ app.get("*", (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
