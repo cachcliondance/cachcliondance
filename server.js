@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import path from "path";
 import multer from "multer";
 import { fileURLToPath } from "url";
+import { Resend } from "resend";
 // import mongoose from 'mongoose';
 
 dotenv.config();
