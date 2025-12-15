@@ -29,13 +29,11 @@ const JoinUs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${apiUrl}/api/join-us`, {
+      const response = await fetch("/api/join-us", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      });      
+      });
 
       if (!response.ok) {
         // Log the response to debug
