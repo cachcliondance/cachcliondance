@@ -32,7 +32,7 @@ const JoinUs = () => {
       console.log("Posting to:", "/api/join-us");
       console.log("Origin:", window.location.origin);
 
-      const response = await fetch("/api/join-us-test", {
+      const response = await fetch("/api/join-us", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
