@@ -237,8 +237,16 @@ app.get("/", (req, res) => {
   res.send("Welcome to the API!"); // Simple response for the root URL
 });
 
+app.use((req, res, next) => {
+  console.log(req.method, req.path);
+  next();
+});
+
+
 // Route for JoinUs form submission
 app.post("/api/join-us", (req, res) => {
+  console.log("join-us body:", req.body);
+
   const { name, age, email, phone } = req.body;
 
   if (!name || !age || !email || !phone) {
