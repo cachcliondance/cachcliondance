@@ -5,6 +5,7 @@ import joinusimg3 from "../assets/joinus_3.jpg";
 import joinusimg4 from "../assets/joinus_4.jpg";
 
 const imageUrls = [joinusimg1, joinusimg2, joinusimg3, joinusimg4];
+const apiUrl = import.meta.env.REACT_APP_API_URL
 
 const JoinUs = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const JoinUs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/join-us`, {
+      const response = await fetch(`${apiUrl}/api/join-us`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -247,7 +247,7 @@ app.post("/api/join-us", (req, res) => {
   // Send email
   const mailOptions = {
     from: "cachcliondance@gmail.com",
-    to: "pvo15@yahoo.com",
+    to: "katrinango3388@gmail.com",
     subject: "New Team Interest Submission - Join Us Form",
     text: `A new “Join Us” form submission has just come through filled out from the website. Here are the details of the potential team member:\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}`,
   };

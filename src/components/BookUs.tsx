@@ -30,6 +30,8 @@ const BookUs = () => {
 
   const performanceOptions = ["Festive Drumming", "Lion", "Dragon"];
 
+  const apiUrl = import.meta.env.REACT_APP_API_URL
+
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setFormData({
@@ -75,7 +77,7 @@ const BookUs = () => {
     };
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/book-us`, {
+      const response = await fetch(`${apiUrl}/api/book-us`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
