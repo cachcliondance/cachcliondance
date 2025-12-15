@@ -224,13 +224,27 @@ app.get('/api/photos', (req, res) => {
 });
 
 // Configure Nodemailer
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS,
+//   },
+// });
+
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  connectionTimeout: 8000,
+  greetingTimeout: 8000,
+  socketTimeout: 8000,
 });
+
 
 // Define a route for the root path
 app.get("/", (req, res) => {
@@ -370,11 +384,24 @@ app.get("/api/ping", (req, res) => {
 
 app.get("/api/email-health", async (req, res) => {
   try {
-    await transporter.verify();
-    res.json({ ok: true });
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      return res.status(500).json({
+        ok: false,
+        error: "Missing EMAIL_USER or EMAIL_PASS",
+      });
+    }
+
+    await Promise.race([
+      transporter.verify(),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("verify() timed out")), 8000)
+      ),
+    ]);
+
+    return res.json({ ok: true });
   } catch (e) {
     console.error("email verify failed:", e);
-    res.status(500).json({ ok: false, error: String(e) });
+    return res.status(500).json({ ok: false, error: String(e) });
   }
 });
 
