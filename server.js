@@ -323,7 +323,7 @@ app.post("/api/book-us", async (req, res) => {
       to: ["katrinango3388@gmail.com"],
       cc: ["cachcliondance@gmail.com"], 
       subject: "New Event Book Submission - Book Us Form",
-      reply_to: email,
+      replyTo: email,
       text:
         `New Book Us form submission:\n\n` +
         `Name: ${name}\n` +
