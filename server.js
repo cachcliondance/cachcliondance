@@ -277,6 +277,7 @@ app.post("/api/join-us", async (req, res) => {
       to: ["katrinango3388@gmail.com"],
       cc: ["cachcliondance@gmail.com"], 
       subject: "New Team Interest Submission - Join Us Form",
+      reply_to: email,
       text: `Name: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n`,
     });
 
