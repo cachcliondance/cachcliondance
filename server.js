@@ -242,6 +242,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.post("/api/join-us-test", (req, res) => {
+  console.log("join-us-test body:", req.body);
+  res.json({ ok: true });
+});
 
 // Route for JoinUs form submission
 app.post("/api/join-us", (req, res) => {
