@@ -77,7 +77,7 @@ const BookUs = () => {
     };
 
     try {
-      const response = await fetch(`${apiUrl}/api/book-us`, {
+      const response = await fetch(`/api/book-us`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

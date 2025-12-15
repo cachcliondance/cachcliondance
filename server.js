@@ -277,7 +277,7 @@ app.post("/api/join-us", async (req, res) => {
       to: ["katrinango3388@gmail.com"],
       cc: ["cachcliondance@gmail.com"], 
       subject: "New Team Interest Submission - Join Us Form",
-      text: `REPLY TO ${email}!!\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n\n`,
+      text: `REPLY TO THIS EMAIL ADDRESS: ${email}! DO NOT CLICK REPLY ON THIS EMAIL!\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n\n`,
     });
 
     res.json({ message: "Submitted successfully" });
@@ -289,54 +289,60 @@ app.post("/api/join-us", async (req, res) => {
 
 
 // Route for BookUs form submission
-app.post("/api/book-us", (req, res) => {
-  const {
-    name,
-    email,
-    phone,
-    eventName,
-    eventDate,
-    eventTime,
-    eventType,
-    performanceRequests,
-    location,
-    additional,
-  } = req.body;
+app.post("/api/book-us", async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+      phone,
+      eventName,
+      eventDate,
+      eventTime,
+      eventType,
+      performanceRequests,
+      location,
+      additional,
+    } = req.body;
 
-  if (
-    !name ||
-    !email ||
-    !phone ||
-    !eventName ||
-    !eventDate ||
-    !eventTime ||
-    !eventType ||
-    !performanceRequests ||
-    !location
-  ) {
-    return res.status(400).json({ error: "All fields are required." });
-  }
-
-  // Send email
-  const mailOptions = {
-    from: "cachcliondance@gmail.com",
-    to: "pvo15@yahoo.com",
-    subject: "New Event Book Submission",
-    text: `A new event form submission has been filled out from the website. Here are the details of the requested event:
-    \n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent Date: ${eventDate}\nEvent Time: ${eventTime}\nEvent Type: ${eventType}\nPerformance Request(s): ${performanceRequests}\nLocation: ${location}\nAdditional: ${additional}`,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("Error sending email:", error);
-      return res.status(500).json({ error: "Failed to send email." });
+    if (
+      !name ||
+      !email ||
+      !phone ||
+      !eventName ||
+      !eventDate ||
+      !eventTime ||
+      !eventType ||
+      !performanceRequests ||
+      !location
+    ) {
+      return res.status(400).json({ error: "All fields are required." });
     }
-    console.log("Email sent: " + info.response);
-    res.json({
-      message: "Book Us form submitted successfully",
-      data: req.body,
+
+    await resend.emails.send({
+      from: "CACHC Lion Dance <team@cachcliondragon.org>",
+      to: ["katrinango3388@gmail.com"],
+      cc: ["cachcliondance@gmail.com"], 
+      subject: "New Event Book Submission - Book Us Form",
+      reply_to: email,
+      text:
+        `New Book Us form submission:\n\n` +
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n\n` +
+        `Event Name: ${eventName}\n` +
+        `Event Date: ${eventDate}\n` +
+        `Event Time: ${eventTime}\n` +
+        `Event Type: ${eventType}\n` +
+        `Performance Request(s): ${performanceRequests}\n` +
+        `Location: ${location}\n` +
+        `Additional: ${additional || "(none)"}\n`,
     });
-  });
+
+    return res.json({ message: "Submitted successfully" });
+  } catch (e) {
+    console.error("book-us error:", e);
+    return res.status(500).json({ error: "Failed to send email." });
+  }
 });
 
 app.get("/api/ping", (req, res) => {
