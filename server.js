@@ -274,10 +274,11 @@ app.post("/api/join-us", async (req, res) => {
 
     await resend.emails.send({
       from: "CACHC Lion Dance <team@cachcliondragon.org>",
-      to: ["katrinango3388@gmail.com"],
+      to: ["pvo15@yahoo.com"],
       cc: ["cachcliondance@gmail.com"], 
+      replyTo: email,
       subject: "New Team Interest Submission - Join Us Form",
-      text: `REPLY TO THIS EMAIL ADDRESS: ${email}! DO NOT CLICK REPLY ON THIS EMAIL!\n\nName: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n\n`,
+      text: `Name: ${name}\nAge: ${age}\nEmail: ${email}\nPhone: ${phone}\n\n`,
     });
 
     res.json({ message: "Submitted successfully" });
@@ -320,7 +321,7 @@ app.post("/api/book-us", async (req, res) => {
 
     await resend.emails.send({
       from: "CACHC Lion Dance <team@cachcliondragon.org>",
-      to: ["katrinango3388@gmail.com"],
+      to: ["pvo15@yahoo.com"],
       cc: ["cachcliondance@gmail.com"], 
       subject: "New Event Book Submission - Book Us Form",
       replyTo: email,
