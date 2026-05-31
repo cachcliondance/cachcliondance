@@ -88,14 +88,10 @@ const Contact = () => {
                 </div>
               </div>
               <div className="hours">
-                <h1 className="mb-4">Opening Hours</h1>
+                <h1 className="mb-4">Practice Hours</h1>
                 <div className="d-flex align-items-center justify-content-evenly">
                   <p>Friday</p>
-                  <p>5:30 pm - 8:30 pm</p>
-                </div>
-                <div className="d-flex align-items-center justify-content-evenly">
-                  <p>Saturday</p>
-                  <p>2:00 pm – 5:00 pm</p>
+                  <p>6:00 pm - 9:15 pm</p>
                 </div>
               </div>
             </div>
