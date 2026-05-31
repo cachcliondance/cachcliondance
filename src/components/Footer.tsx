@@ -54,7 +54,7 @@ const Footer = () => {
           <div className="col-sm-4 col-5">
             <p>
               All practices are located at our main training facility:<br></br>
-              Near 160th & Huron St Broomfield, CO 80023
+              Near 160th & I-25, Broomfield, CO 80023
             </p>
           </div>
         </div>

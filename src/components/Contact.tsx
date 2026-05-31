@@ -44,7 +44,7 @@ const Contact = () => {
                 </svg>
                 <p>
                   All practices are located at our main training facility:
-                  <br></br>Near 160th & Huron St Broomfield, CO 80023
+                  <br></br>Near 160th & I-25, Broomfield, CO 80023
                   <br></br>
                   <br></br>
                   Please note that address above is NOT our mailing address.
